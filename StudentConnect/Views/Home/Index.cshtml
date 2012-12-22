@@ -1,16 +1,73 @@
 ﻿@{
-    ViewBag.Title = "SD Student Connect";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "StudentConnect - Welcome";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div data-role="page">
+<div data-role="page" id="home" data-title="Welcome">
 
-    <div data-role="header">
-        <h1>My Title</h1>
-    </div><!-- /header -->
+	@{ Html.RenderPartial("_Header", "Welcome"); }
 
-    <div data-role="content">	
-        <p>Hello world</p>		
-    </div>
+	<div data-role="content">	
+		<p>Welcome to StudentConnect.  We'd like to ask you for some information. Thanks!</p>
+	</div>
+
+	@{ Html.RenderPartial(@"_Footer"); }
 
 </div><!-- /page -->
+
+<div data-role="page" id="positions" data-title="StudentConnect - Positions">
+
+	@{ Html.RenderPartial("_Header", "Positions"); }
+
+	<div data-role="content">	
+		<p>Here are the positions that we are looking to fill.</p>		
+	</div>
+
+	@{ Html.RenderPartial(@"_Footer"); }
+
+</div><!-- /page -->
+
+<div data-role="page" id="people" data-title="StudentConnect - People">
+
+	@{ Html.RenderPartial("_Header", "People"); }
+	
+	<div data-role="content">	
+		<p>Herer are the people you might meet at the career fair!</p>
+	</div>
+
+	@{ Html.RenderPartial("_Footer"); }
+
+</div><!-- /page -->
+
+<div data-role="page" id="about" data-title="StudentConnect - About SD">
+
+	@{ Html.RenderPartial("_Header", "About SD"); }
+
+	<div data-role="content">	
+		<p>
+			SD is a cool place to work! Get here soon!
+
+			<a href="http://www.somethingdigital.com" target="_blank" title="Something Digital>Our Website</a>
+		</p>
+	</div>
+
+	@{ Html.RenderPartial("_Footer"); }
+
+</div><!-- /page -->
+
+<div data-role="page" id="aboutapp">
+	<div data-role="header" data-theme="b">
+		<h1>StudentConnect</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" data-theme="c">	
+		<h2>About this application</h2>
+		<p>
+			StudentConnect is the coolest. Made by the SD Team.
+		</p>
+	</div><!-- /content -->
+	
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div>
