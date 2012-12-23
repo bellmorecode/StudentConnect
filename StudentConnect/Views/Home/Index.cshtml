@@ -1,13 +1,13 @@
 ﻿@{
-	ViewBag.Title = "StudentConnect - Welcome";
+	ViewBag.Title = "StudentConnect";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div data-role="page" id="home" data-title="Welcome">
+<div data-role="page" id="home" >
 
 	@{ Html.RenderPartial("_Header", "Welcome"); }
 
-	<div data-role="content">	
+	<div data-role="content" data-theme="b" >	
 		<p>Welcome to StudentConnect.  We'd like to ask you for some information. Thanks!</p>
 	</div>
 
@@ -15,11 +15,11 @@
 
 </div><!-- /page -->
 
-<div data-role="page" id="positions" data-title="StudentConnect - Positions">
+<div data-role="page" id="positions" >
 
 	@{ Html.RenderPartial("_Header", "Positions"); }
 
-	<div data-role="content">	
+	<div data-role="content" data-theme="b">	
 		<p>Here are the positions that we are looking to fill.</p>		
 	</div>
 
@@ -27,11 +27,11 @@
 
 </div><!-- /page -->
 
-<div data-role="page" id="people" data-title="StudentConnect - People">
+<div data-role="page" id="people">
 
 	@{ Html.RenderPartial("_Header", "People"); }
 	
-	<div data-role="content">	
+	<div data-role="content" data-theme="b">	
 		<p>Herer are the people you might meet at the career fair!</p>
 	</div>
 
@@ -39,11 +39,11 @@
 
 </div><!-- /page -->
 
-<div data-role="page" id="about" data-title="StudentConnect - About SD">
+<div data-role="page" id="about" >
 
 	@{ Html.RenderPartial("_Header", "About SD"); }
 
-	<div data-role="content">	
+	<div data-role="content" data-theme="b">	
 		<p>
 			SD is a cool place to work! Get here soon!
 
@@ -57,17 +57,24 @@
 
 <div data-role="page" id="aboutapp">
 	<div data-role="header" data-theme="b">
-		<h1>StudentConnect</h1>
+		<h1>Student Connect</h1>
 	</div><!-- /header -->
 
-	<div data-role="content" data-theme="c">	
+	<div data-role="content" data-theme="b">	
 		<h2>About this application</h2>
 		<p>
-			StudentConnect is the coolest. Made by the SD Team.
+			Student Connect is a concept project built by the Something Digital (SD) dev team.  
 		</p>
+        <p>
+            We wanted to build the same prototype in iOS, Android, and HTML5 and use it as a platform to reach out to students and graduates at career fairs.  
+        </p>
+        <p>
+            Source code (for services and HTML5/MVC3 app (others comming) is free here: http://github.com/glennferrie/StudentConnect
+        </p>
 	</div><!-- /content -->
 	
-	<div data-role="footer">
-		<h4>Page Footer</h4>
+	<div data-role="footer"  data-theme="b">
+		<h4>Something Digital <br />
+        Copyright &copy; @DateTime.Now.Year.ToString()</h4>
 	</div><!-- /footer -->
 </div>

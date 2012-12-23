@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div data-role="page">
+    @{ Html.RenderPartial("_Header", "Login"); }
+
+	<div data-role="content">	
+        <div data-role="fieldcontain">
+            <label for="name">Passcode:</label>
+            <input type="text" name="name" id="name" value=""  />
+        </div>	
+        
+	</div>
+
+    <div data-role="footer">
+        this is the footer
+    </div>
+</div>
