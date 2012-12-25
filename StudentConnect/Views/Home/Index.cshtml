@@ -1,80 +1,110 @@
 ﻿@{
-	ViewBag.Title = "StudentConnect";
-	Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div data-role="page" id="home" >
+<div data-role="page" id="home" data-title="Home" >
 
-	@{ Html.RenderPartial("_Header", "Welcome"); }
+    @{ Html.RenderPartial("_Header", "Welcome"); }
 
-	<div data-role="content" data-theme="b" >	
-		<p>Welcome to StudentConnect.  We'd like to ask you for some information. Thanks!</p>
-	</div>
 
-	@{ Html.RenderPartial(@"_Footer"); }
+
+    <div data-role="content" data-theme="b" >	
+        <label for="basic">Name:</label>
+        <input type="text" name="name" id="name" data-mini="true" />
+        <label for="basic">Email:</label>
+        <input type="email" name="email" id="email" data-mini="true" />
+        <label for="basic">Phone:</label>
+        <input type="tel" name="phone" id="phone" data-mini="true" />
+        <label for="basic">Major:</label>
+        <input type="text" name="major" id="major" data-mini="true" />
+        <fieldset data-role="controlgroup">
+            <legend>Preferred Contact Method:</legend>
+                <input type="radio" name="radio-choice" id="radio-choice-1" value="email" checked="checked" />
+                <label for="radio-choice-1">Email</label>
+
+                <input type="radio" name="radio-choice" id="radio-choice-2" value="phone"  />
+                <label for="radio-choice-2">Phone</label>
+        </fieldset>
+        <div data-role="fieldcontain">
+           <label for="select-choice-1" class="select">Shipping method:</label>
+           <select name="select-choice-1" id="select-choice-1">
+              <option value="standard">Standard: 7 day</option>
+              <option value="rush">Rush: 3 days</option>
+              <option value="express">Express: next day</option>
+              <option value="overnight">Overnight</option>
+           </select>
+        </div>
+        <label for="textarea-a">Textarea:</label>
+            <textarea name="textarea" id="textarea-a">
+            I'm a basic textarea. If this is pre-populated with content, the height will be automatically adjusted to fit without needing to scroll. That is a pretty handy usability feature.
+            </textarea>
+    </div>
+
+    @{ Html.RenderPartial(@"_Footer"); }
 
 </div><!-- /page -->
 
 <div data-role="page" id="positions" >
 
-	@{ Html.RenderPartial("_Header", "Positions"); }
+    @{ Html.RenderPartial("_Header", "Positions"); }
 
-	<div data-role="content" data-theme="b">	
-		<p>Here are the positions that we are looking to fill.</p>		
-	</div>
+    <div data-role="content" data-theme="b">	
+        <p>Here are the positions that we are looking to fill.</p>		
+    </div>
 
-	@{ Html.RenderPartial(@"_Footer"); }
+    @{ Html.RenderPartial(@"_Footer"); }
 
 </div><!-- /page -->
 
 <div data-role="page" id="people">
 
-	@{ Html.RenderPartial("_Header", "People"); }
-	
-	<div data-role="content" data-theme="b">	
-		<p>Herer are the people you might meet at the career fair!</p>
-	</div>
+    @{ Html.RenderPartial("_Header", "People"); }
+    
+    <div data-role="content" data-theme="b">	
+        <p>Herer are the people you might meet at the career fair!</p>
+    </div>
 
-	@{ Html.RenderPartial("_Footer"); }
+    @{ Html.RenderPartial("_Footer"); }
 
 </div><!-- /page -->
 
 <div data-role="page" id="about" >
 
-	@{ Html.RenderPartial("_Header", "About SD"); }
+    @{ Html.RenderPartial("_Header", "About SD"); }
 
-	<div data-role="content" data-theme="b">	
-		<p>
-			SD is a cool place to work! Get here soon!
+    <div data-role="content" data-theme="b">	
+        <p>
+            SD is a cool place to work! Get here soon!
 
-			<a href="http://www.somethingdigital.com" target="_blank" title="Something Digital">Our Website</a>
-		</p>
-	</div>
+            <a href="http://www.somethingdigital.com" target="_blank" title="Something Digital">Our Website</a>
+        </p>
+    </div>
 
-	@{ Html.RenderPartial("_Footer"); }
+    @{ Html.RenderPartial("_Footer"); }
 
 </div><!-- /page -->
 
 <div data-role="page" id="aboutapp">
-	<div data-role="header" data-theme="b">
-		<h1>Student Connect</h1>
-	</div><!-- /header -->
+    <div data-role="header" data-theme="b">
+        <h1>Student Connect</h1>
+    </div><!-- /header -->
 
-	<div data-role="content" data-theme="b">	
-		<h2>About this application</h2>
-		<p>
-			Student Connect is a concept project built by the Something Digital (SD) dev team.  
-		</p>
+    <div data-role="content" data-theme="b">	
+        <h2>About this application</h2>
+        <p>
+            Student Connect is a concept project built by the Something Digital (SD) dev team.  
+        </p>
         <p>
             We wanted to build the same prototype in iOS, Android, and HTML5 and use it as a platform to reach out to students and graduates at career fairs.  
         </p>
         <p>
-            Source code (for services and HTML5/MVC3 app (others comming) is free here: http://github.com/glennferrie/StudentConnect
+            Source code (for services and HTML5/MVC3 app (others coming) is free here: http://github.com/glennferrie/StudentConnect
         </p>
-	</div><!-- /content -->
-	
-	<div data-role="footer"  data-theme="b">
-		<h4>Something Digital <br />
-        Copyright &copy; @DateTime.Now.Year.ToString()</h4>
-	</div><!-- /footer -->
+    </div><!-- /content -->
+    
+    <div data-role="footer"  data-theme="b">
+        <h4>Something Digital 
+        &copy; @DateTime.Now.Year.ToString()</h4>
+    </div><!-- /footer -->
 </div>
