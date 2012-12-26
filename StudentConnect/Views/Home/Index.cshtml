@@ -1,23 +1,40 @@
 ﻿@{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Contact Info";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div data-role="page" id="home" data-title="Home" >
+<div data-role="page" id="home" data-title="Contact Info" >
 
-    @{ Html.RenderPartial("_Header", "Welcome"); }
+    @{ Html.RenderPartial("_Header", "Your Contact Info"); }
 
 
 
     <div data-role="content" data-theme="b" >	
-        <label for="basic">Name:</label>
+        <label for="name">Name:</label>
         <input type="text" name="name" id="name" data-mini="true" />
-        <label for="basic">Email:</label>
+        <label for="email">Email:</label>
         <input type="email" name="email" id="email" data-mini="true" />
-        <label for="basic">Phone:</label>
+        <label for="phone">Phone:</label>
         <input type="tel" name="phone" id="phone" data-mini="true" />
-        <label for="basic">Major:</label>
+        <label for="major">Major:</label>
         <input type="text" name="major" id="major" data-mini="true" />
+        <label for="textarea-a">Tell us about you:</label>
+            <textarea name="textarea" id="textarea-a">
+            
+            </textarea>
+        <div data-role="fieldcontain">
+            <fieldset data-role="controlgroup">
+	           <legend>Interested in:</legend>
+	           <input type="checkbox" name="position-1" id="position-1" class="custom" />
+	           <label for="position-1">Software Developer</label>
+               <input type="checkbox" name="position-2" id="position-2" class="custom" />
+	           <label for="position-2">Interactive Developer</label>
+               <input type="checkbox" name="position-3" id="position-3" class="custom" />
+	           <label for="position-3">UX Designer</label>
+               <input type="checkbox" name="position-4" id="position-4" class="custom" />
+	           <label for="position-4">Project Manager</label>
+            </fieldset>
+        </div>
         <fieldset data-role="controlgroup">
             <legend>Preferred Contact Method:</legend>
                 <input type="radio" name="radio-choice" id="radio-choice-1" value="email" checked="checked" />
@@ -26,19 +43,7 @@
                 <input type="radio" name="radio-choice" id="radio-choice-2" value="phone"  />
                 <label for="radio-choice-2">Phone</label>
         </fieldset>
-        <div data-role="fieldcontain">
-           <label for="select-choice-1" class="select">Shipping method:</label>
-           <select name="select-choice-1" id="select-choice-1">
-              <option value="standard">Standard: 7 day</option>
-              <option value="rush">Rush: 3 days</option>
-              <option value="express">Express: next day</option>
-              <option value="overnight">Overnight</option>
-           </select>
-        </div>
-        <label for="textarea-a">Textarea:</label>
-            <textarea name="textarea" id="textarea-a">
-            I'm a basic textarea. If this is pre-populated with content, the height will be automatically adjusted to fit without needing to scroll. That is a pretty handy usability feature.
-            </textarea>
+                
     </div>
 
     @{ Html.RenderPartial(@"_Footer"); }
