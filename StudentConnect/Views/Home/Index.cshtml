@@ -1,13 +1,40 @@
 ﻿@{
-    ViewBag.Title = "Contact Info";
+    ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div data-role="page" id="home" data-title="Contact Info" >
+<script type="text/javascript">
+    // TODO: extract to separate JS file
+    var sd = {
+        util: {
+            ajaxFail: function (a,b,c) {
+                
+            },
+            ajaxStatusTrap : function (a,b) { 
 
-    @{ Html.RenderPartial("_Header", "Your Contact Info"); }
+            }
+        },
+        content: {
+            getPositionsListAsync: function (callback) {
+                $.ajax({
+                    url: '@Url.Action("PositionList", "Api")', type: 'POST', success: callback, fail: sd.util.ajaxFail
+                });
+            }
+        }
+    };
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //sd.content.getPositionsListAsync(function (data) { alert(data); });
+    });
+</script>
+
+<div data-role="page" id="home" data-title="Home | StudentConnect" >
+
+    @{ Html.RenderPartial("_Header", "Home"); }
 
     <div data-role="content" data-theme="b" >	
+        <h4>Your Contact Info</h4>
         <label for="name">Name:</label>
         <input type="text" name="name" id="name" data-mini="true" />
         <label for="email">Email:</label>
@@ -16,10 +43,8 @@
         <input type="tel" name="phone" id="phone" data-mini="true" />
         <label for="major">Major:</label>
         <input type="text" name="major" id="major" data-mini="true" />
-        <label for="textarea-a">Tell us about you:</label>
-            <textarea name="textarea" id="textarea-a">
-            
-            </textarea>
+        <label for="aboutyou">Tell us about you:</label>
+            <textarea name="textarea" id="aboutyou"></textarea>
         <div data-role="fieldcontain">
             <fieldset data-role="controlgroup">
 	           <legend>Interested in:</legend>
@@ -48,7 +73,7 @@
 
 </div><!-- /page -->
 
-<div data-role="page" id="positions" >
+<div data-role="page" id="positions"  data-title="Positions | StudentConnect" >
 
     @{ Html.RenderPartial("_Header", "Positions"); }
 
@@ -60,7 +85,7 @@
 
 </div><!-- /page -->
 
-<div data-role="page" id="people">
+<div data-role="page" id="people"  data-title="People | StudentConnect" >
 
     @{ Html.RenderPartial("_Header", "People"); }
     
@@ -72,13 +97,13 @@
 
 </div><!-- /page -->
 
-<div data-role="page" id="about" >
+<div data-role="page" id="about"  data-title="About SD | StudentConnect" >
 
     @{ Html.RenderPartial("_Header", "About SD"); }
 
     <div data-role="content" data-theme="b">	
         <p >
-            <img src="http://sdshare.blob.core.windows.net/res/siglogo.png" align="left" style="margin: 12px;" />
+            <img src="@Url.Content("~\\_images\\logo.png")" align="left" style="margin: 4px;" />
             Something Digital (SD) is a dynamic, New York City-based Technology Services boutique offering three distinct practice groups—Interactive Design, Software, and IT Services—to meet diverse technology needs.
         </p>
 
@@ -93,19 +118,22 @@
 
 <div data-role="page" id="aboutapp">
     <div data-role="header" data-theme="b">
-        <h1>Student Connect</h1>
+        <h1>StudentConnect</h1>
     </div><!-- /header -->
 
     <div data-role="content" data-theme="b">	
-        <h2>About this application</h2>
+        <h2>About StudentConnect</h2>
         <p>
-            Student Connect is a concept project started by the Something Digital (SD) dev team.  
+            StudentConnect is a concept project started by the Something Digital (SD) dev team.  
         </p>
         <p>
-            We wanted to build the same prototype in iOS, Android, and HTML5 and use it as a platform to reach out to students and graduates at career fairs.  
+            Our objective was to create a prototype in HTML5 as well as iOS and Android which we'd use as a platform to reach out to students and graduates at career fairs.  
         </p>
         <p>
-            Source code (for services and HTML5/MVC3 app (others coming soon...) is free here: http://github.com/glennferrie/StudentConnect
+            Source code (for services and HTML5/MVC3 app is available here: http://github.com/glennferrie/StudentConnect
+        </p>
+        <p>
+            Other source code will be available as they apps are released.
         </p>
     </div><!-- /content -->
     
