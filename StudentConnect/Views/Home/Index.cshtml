@@ -7,8 +7,6 @@
 
     @{ Html.RenderPartial("_Header", "Your Contact Info"); }
 
-
-
     <div data-role="content" data-theme="b" >	
         <label for="name">Name:</label>
         <input type="text" name="name" id="name" data-mini="true" />
@@ -79,10 +77,13 @@
     @{ Html.RenderPartial("_Header", "About SD"); }
 
     <div data-role="content" data-theme="b">	
-        <p>
-            SD is a cool place to work! Get here soon!
+        <p >
+            <img src="http://sdshare.blob.core.windows.net/res/siglogo.png" align="left" style="margin: 12px;" />
+            Something Digital (SD) is a dynamic, New York City-based Technology Services boutique offering three distinct practice groups—Interactive Design, Software, and IT Services—to meet diverse technology needs.
+        </p>
 
-            <a href="http://www.somethingdigital.com" target="_blank" title="Something Digital">Our Website</a>
+        <p>
+            Find out more about SD and our team on our website, <a href="http://www.somethingdigital.com/" target="_blank">somethingdigital.com</a>
         </p>
     </div>
 
@@ -98,18 +99,15 @@
     <div data-role="content" data-theme="b">	
         <h2>About this application</h2>
         <p>
-            Student Connect is a concept project built by the Something Digital (SD) dev team.  
+            Student Connect is a concept project started by the Something Digital (SD) dev team.  
         </p>
         <p>
             We wanted to build the same prototype in iOS, Android, and HTML5 and use it as a platform to reach out to students and graduates at career fairs.  
         </p>
         <p>
-            Source code (for services and HTML5/MVC3 app (others coming) is free here: http://github.com/glennferrie/StudentConnect
+            Source code (for services and HTML5/MVC3 app (others coming soon...) is free here: http://github.com/glennferrie/StudentConnect
         </p>
     </div><!-- /content -->
     
-    <div data-role="footer"  data-theme="b">
-        <h4>Something Digital 
-        &copy; @DateTime.Now.Year.ToString()</h4>
-    </div><!-- /footer -->
+    @{ Html.RenderPartial("_Footer"); }
 </div>
