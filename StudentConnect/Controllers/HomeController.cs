@@ -9,14 +9,14 @@ using StudentConnect.Data;
 namespace StudentConnect.Controllers
 {
     using Model;
+    using StudentConnect.Utils;
     public class HomeController : Controller
     {
         IContentRepository repo;
 
         public HomeController()
         {
-            // TODO: Ioc should be here.
-            repo = new MockContentRepository();
+            repo = ServiceProvider.Resolve<IContentRepository>();
         }
         
         public ActionResult Index()

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using StudentConnect.Data;
+using StudentConnect.Utils;
 
 namespace StudentConnect.Controllers
 {
@@ -13,8 +14,7 @@ namespace StudentConnect.Controllers
 
         public ApiController()
         {
-            // TODO: Replace with IOC, once we are online!!
-            repo = new StudentConnect.Data.MockContentRepository();
+            repo = ServiceProvider.Resolve<IContentRepository>();
         }
 
         public ActionResult Index()
