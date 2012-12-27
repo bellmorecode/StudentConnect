@@ -17,6 +17,11 @@ namespace StudentConnect.Controllers
             repo = new StudentConnect.Data.MockContentRepository();
         }
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         [HttpPost]
         public JsonResult PositionList()
         {
@@ -28,8 +33,7 @@ namespace StudentConnect.Controllers
         {
             return Json(repo.GetPositions());
         }
-
-
+        
         [HttpPost]
         public JsonResult People()
         {

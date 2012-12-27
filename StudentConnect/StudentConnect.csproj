@@ -76,7 +76,7 @@
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\PositionsController.cs" />
     <Compile Include="Data\AboutContent.cs" />
-    <Compile Include="Data\ContentRepository.cs" />
+    <Compile Include="Data\MockContentRepository.cs" />
     <Compile Include="Data\IContentRepository.cs" />
     <Compile Include="Data\Person.cs" />
     <Compile Include="Data\Position.cs" />
@@ -218,6 +218,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\People\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Api\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -26,5 +26,11 @@ namespace StudentConnect.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult SaveContactData(FormCollection collection)
+        {
+
+            return RedirectToAction("Index");
+        }
     }
 }

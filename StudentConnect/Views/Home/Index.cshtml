@@ -2,48 +2,43 @@
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div data-role="page" id="home" data-title="Home | StudentConnect" >
-
+<div data-role="page" id="home"  >
     @{ Html.RenderPartial("_Header", "Home"); }
-
-    <div data-role="content" data-theme="b" >	
-        <h4>Your Contact Info</h4>
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" data-mini="true" />
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" data-mini="true" />
-        <label for="phone">Phone:</label>
-        <input type="tel" name="phone" id="phone" data-mini="true" />
-        <label for="major">Major:</label>
-        <input type="text" name="major" id="major" data-mini="true" />
-        <label for="aboutyou">Tell us about you:</label>
+    
+    @using (Html.BeginForm("SaveContactData", "Home", FormMethod.Post))
+    {
+        <div data-role="content" data-theme="b" >	
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" data-mini="true" />
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" data-mini="true" />
+            <label for="phone">Phone:</label>
+            <input type="tel" name="phone" id="phone" data-mini="true" />
+            <label for="major">Major:</label>
+            <input type="text" name="major" id="major" data-mini="true" />
+            <label for="aboutyou">Tell us about you:</label>
             <textarea name="textarea" id="aboutyou"></textarea>
-        <div data-role="fieldcontain" id="positionsContainer">
+                                                <div data-role="fieldcontain" id="positionsContainer">
             <fieldset data-role="controlgroup" id="interestedInPositions">
-	           <legend>Interested in:</legend>
-               <input type="checkbox" name="option-sample" id="option-sample" />
-               <label for="option-sample">Sample</label>
-               
-               @{ foreach(StudentConnect.Controllers.Model.PositionItem item in Model) { 
-                      
-                          <input type="checkbox" name="option-@item.Index" id="option-@item.Index" />
-                            <label for="option-@item.Index">@item.Value</label>
-                  }}
-
+                <legend>Interested in:</legend>
+                @foreach (StudentConnect.Controllers.Model.PositionItem item in Model)
+                {       
+                    <input type="checkbox" name="option-@item.Index" id="option-@item.Index" />
+                    <label for="option-@item.Index">@item.Value</label>
+                }
             </fieldset>
         </div>
-        <fieldset data-role="controlgroup">
-            <legend>Preferred Contact Method:</legend>
-                <input type="radio" name="radio-choice" id="radio-choice-1" value="email" checked="checked" />
-                <label for="radio-choice-1">Email</label>
-
-                <input type="radio" name="radio-choice" id="radio-choice-2" value="phone"  />
-                <label for="radio-choice-2">Phone</label>
-        </fieldset>
-                
-    </div>
+            <fieldset data-role="controlgroup">
+                <legend>Preferred Contact Method:</legend>
+                    <input type="radio" name="radio-choice" id="radio-choice-1" value="email" checked="checked" />
+                    <label for="radio-choice-1">Email</label>
+                    <input type="radio" name="radio-choice" id="radio-choice-2" value="phone"  />
+                    <label for="radio-choice-2">Phone</label>
+            </fieldset>
+            <input type="submit" value="Save"  />
+        </div>
+    }
 
     @{ Html.RenderPartial(@"_Footer"); }
-
 </div>
 
