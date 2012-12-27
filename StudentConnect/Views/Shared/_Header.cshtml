@@ -4,10 +4,10 @@
     <a href="#aboutapp" data-rel="dialog" data-transition="pop" data-icon="info" class="ui-btn-right" data-iconpos="notext">Options</a>
     <div data-role="navbar"  data-theme="b">
         <ul>
-            <li><a href="#home" data-role="button" data-icon="home">Contact Info</a></li>
-            <li><a href="#positions" data-role="button" data-icon="check">Positions</a></li>
-            <li><a href="#people" data-role="button" data-icon="grid">People</a></li>
-            <li><a href="#about" data-role="button" data-icon="info" >About SD</a></li>
+            <li><a href="@Url.Action("Index", "Home")" data-role="button" data-icon="home" rel="external" data-transition="pop" >Contact Info</a></li>
+            <li><a href="@Url.Action("Index", "Positions")" data-role="button" data-icon="check" rel="external" data-transition="pop">Positions</a></li>
+            <li><a href="@Url.Action("Index", "People")" data-role="button" data-icon="grid" rel="external" data-transition="pop">People</a></li>
+            <li><a href="@Url.Action("Index", "About")" data-role="button" data-icon="info" rel="external" data-transition="pop">About SD</a></li>
         </ul>
     </div>
 </div><!-- /header -->

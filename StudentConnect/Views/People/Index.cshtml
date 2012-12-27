@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "People";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div data-role="page" id="people"  data-title="People | StudentConnect" >
+
+    @{ Html.RenderPartial("_Header", "People"); }
+    
+    <div data-role="content" data-theme="b">	
+        <p>Herer are the people you might meet at the career fair!</p>
+    </div>
+
+    @{ Html.RenderPartial("_Footer"); }
+
+</div>

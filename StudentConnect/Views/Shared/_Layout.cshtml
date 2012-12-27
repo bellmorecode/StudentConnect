@@ -11,5 +11,27 @@
 
 <body>
     @RenderBody()
+
+    
+    <div data-role="page" id="aboutapp">
+        <div data-role="header" data-theme="b">
+            <h1>StudentConnect</h1>
+        </div>
+
+        <div data-role="content" data-theme="b">	
+            <h2>About StudentConnect</h2>
+            <p>
+                StudentConnect is a concept project started by the Something Digital (SD) dev team.  
+            </p>
+            <p>
+                Our objective was to create a prototype in HTML5 as well as iOS and Android which we'd use as a platform to reach out to students and graduates at career fairs. 
+            </p>
+            <p>
+                Source code (for services and HTML5/MVC3 app) is available here: http://github.com/glennferrie/StudentConnect. Other source code will be available as apps are released.
+            </p>
+        </div>
+    
+        @{ Html.RenderPartial("_Footer"); }
+    </div>
 </body>
 </html>

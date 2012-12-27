@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "About SD";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div data-role="page" id="about" >
+
+    @{ Html.RenderPartial("_Header", "About SD"); }
+
+    <div data-role="content" data-theme="b">	
+        <p >
+            <img src="https://sdshare.blob.core.windows.net/res/logo.png" align="left" style="margin: 4px;" />
+            Something Digital (SD) is a dynamic, New York City-based Technology Services boutique offering three distinct practice groups—Interactive Design, Software, and IT Services—to meet diverse technology needs.
+        </p>
+
+        <p>
+            Find out more about SD and our team on our website, <a href="http://www.somethingdigital.com/" target="_blank">somethingdigital.com</a>
+        </p>
+    </div>
+
+    @{ Html.RenderPartial("_Footer"); }
+
+</div>

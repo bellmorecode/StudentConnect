@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Positions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div data-role="page" id="positions"  >
+
+    @{ Html.RenderPartial("_Header", "Positions"); }
+
+    <div data-role="content" data-theme="b">	
+        <p>Here are the positions that we are looking to fill.</p>		
+    </div>
+
+    @{ Html.RenderPartial(@"_Footer"); }
+
+</div>
+
+
+
