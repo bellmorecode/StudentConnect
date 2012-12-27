@@ -21,7 +21,8 @@ namespace StudentConnect.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var model = repo.GetPeople();
+            return View(model);
         }
 
     }

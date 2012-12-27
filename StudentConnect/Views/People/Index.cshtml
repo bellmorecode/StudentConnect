@@ -8,7 +8,16 @@
     @{ Html.RenderPartial("_Header", "People"); }
     
     <div data-role="content" data-theme="b">	
-        
+        @foreach (StudentConnect.Data.Person p in Model)
+        { 
+            <div>
+                <span>@p.DisplayOrder</span>
+                &nbsp;
+                <span>@p.Name</span>
+                &nbsp;
+                <span>@p.Title</span>
+            </div>
+        }        
     </div>
 
     @{ Html.RenderPartial("_Footer"); }

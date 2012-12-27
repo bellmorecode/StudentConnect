@@ -22,7 +22,8 @@ namespace StudentConnect.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var model = repo.GetPositions();
+            return View(model);
         }
 
     }

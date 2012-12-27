@@ -7,8 +7,15 @@
 
     @{ Html.RenderPartial("_Header", "Positions"); }
 
-    <div data-role="content" data-theme="b">	
-        <p>Here are the positions that we are looking to fill.</p>		
+    <div data-role="content" data-theme="b" style="padding: 10px;">	
+        @foreach (StudentConnect.Data.Position p in Model)
+        { 
+            <div>
+                <span>@p.Title</span>
+                &nbsp;
+                <span>@p.Description</span>
+            </div>
+        }        
     </div>
 
     @{ Html.RenderPartial(@"_Footer"); }
