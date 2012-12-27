@@ -8,16 +8,20 @@
     @{ Html.RenderPartial("_Header", "People"); }
     
     <div data-role="content" data-theme="b">	
+        <h4>SD People</h4>
+        
+        <p>Here are some of the people you'll meet at the career fair: </p>
+
+        <ul>
         @foreach (StudentConnect.Data.Person p in Model)
         { 
-            <div>
-                <span>@p.DisplayOrder</span>
-                &nbsp;
-                <span>@p.Name</span>
-                &nbsp;
-                <span>@p.Title</span>
-            </div>
-        }        
+            <li style="margin-bottom: 12px;">
+                <div>
+                    <img src="@p.ImageUrl" height="48" width="48" border="0" align="left" style="margin-right: 8px;" /> <strong>@p.Name // @p.Title</strong> <br /> @p.MoreInfo
+                </div>
+            </li>
+        }   
+        </ul>     
     </div>
 
     @{ Html.RenderPartial("_Footer"); }

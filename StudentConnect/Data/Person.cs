@@ -15,8 +15,6 @@ namespace StudentConnect.Data
 
         public string MoreInfo { get; set; }
 
-        public string LinkToBio { get; set; }
-
         public string BioLink { get; set; }
 
         public string ImageUrl { get; set; }
