@@ -1,7 +1,7 @@
 ﻿@{ ViewBag.Title = Model; }
 <div data-role="header" data-theme="b" >
     <h1>@Model</h1>
-    <a href="#aboutapp" data-rel="dialog" data-transition="pop" data-icon="info" class="ui-btn-right" data-iconpos="notext">Options</a>
+    <a href="#aboutapp" data-rel="dialog" data-transition="pop" data-icon="info" class="ui-btn-right" data-iconpos="notext">About</a>
     <div data-role="navbar"  data-theme="b">
         <ul>
             <li><a href="@Url.Action("Index", "Home")" data-role="button" data-icon="home" rel="external" data-transition="pop" >Contact Info</a></li>
@@ -10,4 +10,4 @@
             <li><a href="@Url.Action("Index", "About")" data-role="button" data-icon="info" rel="external" data-transition="pop">About SD</a></li>
         </ul>
     </div>
-</div><!-- /header -->
+</div>

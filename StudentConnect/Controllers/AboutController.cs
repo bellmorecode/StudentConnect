@@ -18,7 +18,7 @@ namespace StudentConnect.Controllers
         }
         //
         // GET: /About/
-
+        [Authorize]
         public ActionResult Index()
         {
             return View();

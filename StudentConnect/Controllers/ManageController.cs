@@ -10,7 +10,7 @@ namespace StudentConnect.Controllers
     {
         //
         // GET: /Manage/
-
+        [Authorize(Roles="Admin")]
         public ActionResult Index()
         {
             return View();
