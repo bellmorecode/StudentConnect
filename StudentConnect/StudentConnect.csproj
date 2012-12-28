@@ -81,14 +81,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Model\PositionItem.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\PositionsController.cs" />
-    <Compile Include="Data\AboutContent.cs" />
-    <Compile Include="Data\Mocks\MockContentRepository.cs" />
-    <Compile Include="Data\IContentRepository.cs" />
-    <Compile Include="Data\Person.cs" />
-    <Compile Include="Data\Position.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,7 +160,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="logo.ico" />
-    <Content Include="README.jQuery.vsdoc.txt" />
     <Content Include="Scripts\jquery-1.8.3-vsdoc.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\jquery-1.8.3.min.js" />
@@ -202,7 +197,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="_images\logo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -229,6 +226,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Api\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Manage\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StudentConnect.Core\StudentConnect.Core.csproj">
+      <Project>{5A97717D-DE14-405B-BCB9-2B161B4990EC}</Project>
+      <Name>StudentConnect.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

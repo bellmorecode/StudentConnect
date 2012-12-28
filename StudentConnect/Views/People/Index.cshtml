@@ -13,14 +13,16 @@
         <p>Here are some of the people you'll meet at the career fair: </p>
 
         <ul>
-        @foreach (StudentConnect.Data.Person p in Model)
-        { 
-            <li style="margin-bottom: 12px;">
-                <div>
-                    <img src="@p.ImageUrl" height="48" width="48" border="0" align="left" style="margin-right: 8px;" /> <strong>@p.Name // @p.Title</strong> <br /> @p.MoreInfo
-                </div>
-            </li>
-        }   
+            @foreach (StudentConnect.Data.Person p in Model)
+            { 
+                <li style="margin-bottom: 12px;">
+                    <div>
+                        <img src="@p.ImageUrl" height="48" width="48" border="0" align="left" style="margin-right: 8px;" /> 
+                        <strong>@p.Name // @p.Title</strong> <br /> 
+                        @p.MoreInfo
+                    </div>
+                </li>
+            }   
         </ul>     
     </div>
 

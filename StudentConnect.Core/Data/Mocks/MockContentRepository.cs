@@ -32,5 +32,12 @@ namespace StudentConnect.Data
             yield return new Person { DisplayOrder = 3, Name = "James Idoni", Title = "Project Manager", MoreInfo = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae aliquet felis. Suspendisse potenti. Mauris bibendum felis non enim aliquet scelerisque. Nunc sit amet felis at risus ultrices vestibulum. Sed volutpat vehicula ligula, eu laoreet neque volutpat sit amet.", BioLink = "", ImageUrl = "https://lh4.googleusercontent.com/-v-WVQRQf46M/AAAAAAAAAAI/AAAAAAAAAAA/ICaYpxmOnzw/s27-c/photo.jpg" };
             yield return new Person { DisplayOrder = 3, Name = "Kishore Joshi", Title = "Software Dev", MoreInfo = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae aliquet felis. Suspendisse potenti. Mauris bibendum felis non enim aliquet scelerisque. Nunc sit amet felis at risus ultrices vestibulum. Sed volutpat vehicula ligula, eu laoreet neque volutpat sit amet.", BioLink = "", ImageUrl = "https://lh4.googleusercontent.com/-v-WVQRQf46M/AAAAAAAAAAI/AAAAAAAAAAA/ICaYpxmOnzw/s27-c/photo.jpg" };
         }
+
+        public void SaveContact(ContactInfo info)
+        {
+            // do nothing. saving. but not really.
+        }
+
+
     }
 }

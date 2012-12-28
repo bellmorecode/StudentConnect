@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentConnect", "StudentConnect\StudentConnect.csproj", "{B254DDD1-B8E7-4846-94C0-FB428043E5AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentConnect.Core", "StudentConnect.Core\StudentConnect.Core.csproj", "{5A97717D-DE14-405B-BCB9-2B161B4990EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{B254DDD1-B8E7-4846-94C0-FB428043E5AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B254DDD1-B8E7-4846-94C0-FB428043E5AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B254DDD1-B8E7-4846-94C0-FB428043E5AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A97717D-DE14-405B-BCB9-2B161B4990EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A97717D-DE14-405B-BCB9-2B161B4990EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A97717D-DE14-405B-BCB9-2B161B4990EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A97717D-DE14-405B-BCB9-2B161B4990EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
