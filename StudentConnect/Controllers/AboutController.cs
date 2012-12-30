@@ -18,6 +18,7 @@ namespace StudentConnect.Controllers
         }
         //
         // GET: /About/
+        [Authorize(Roles = "Student, Admin")]
         public ActionResult Index()
         {
             return View();

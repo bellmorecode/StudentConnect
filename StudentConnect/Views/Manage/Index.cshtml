@@ -1,6 +1,16 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Management Console";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
+<div data-role="page" id="Admin"  >
+    @{ Html.RenderPartial("_HeaderNoNav", "Management Console"); }
+    
+    <div data-role="content">
+        <h4>Coming soon...</h4>
+    </div>
+
+    @{ Html.RenderPartial(@"_Footer"); }
+</div>
 
 
