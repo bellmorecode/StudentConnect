@@ -19,7 +19,6 @@ namespace StudentConnect.Controllers
 
         //
         // GET: /Positions/
-        [Authorize]
         public ActionResult Index()
         {
             var model = repo.GetPositions();

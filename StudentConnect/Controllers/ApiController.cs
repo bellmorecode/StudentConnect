@@ -23,28 +23,24 @@ namespace StudentConnect.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public JsonResult PositionList()
         {
             return Json(repo.GetPositions().Select(q => q.Title).ToArray());
         }
 
         [HttpPost]
-        [Authorize]
         public JsonResult PositionDetails()
         {
             return Json(repo.GetPositions());
         }
         
         [HttpPost]
-        [Authorize]
         public JsonResult People()
         {
             return Json(repo.GetPeople());
         }
 
         [HttpPost]
-        [Authorize]
         public JsonResult AboutContent()
         {
             return Json(repo.GetAbout());

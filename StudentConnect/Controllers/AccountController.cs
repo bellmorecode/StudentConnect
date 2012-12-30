@@ -25,32 +25,7 @@ namespace StudentConnect.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection collection)
         {
-            var passcode = collection["passcode"];
-            bool authsuccess = false;
-            bool attemptLogin = false;
-
-            // TODO: Work in Progress
-            switch(passcode)
-            {
-                case "RPI":
-                    attemptLogin = true;
-                    break;
-                default:
-                    break;
-            }
-
-            var result = Membership.ValidateUser("GlennStudentConnect", "M@st3rK3y");
-            if (authsuccess && attemptLogin)
-            {
-                var passbackUrl = Request.QueryString["ddd"];
-                return View();
-            }
-            else
-            {
-                ViewBag.ErrorMessage = "Failed to authentication. Unknown passcode.";
-                return View();
-
-            }
+            return View();
             
         }
     }
