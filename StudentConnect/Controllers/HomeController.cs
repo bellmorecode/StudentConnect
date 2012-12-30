@@ -18,7 +18,7 @@ namespace StudentConnect.Controllers
         {
             repo = ServiceProvider.Resolve<IContentRepository>();
         }
-        [Authorize]
+
         public ActionResult Index()
         {
             int index = 1;
@@ -27,7 +27,6 @@ namespace StudentConnect.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public ActionResult SaveContactData(FormCollection collection)
         {
             // TODO: Implement 'Save'
