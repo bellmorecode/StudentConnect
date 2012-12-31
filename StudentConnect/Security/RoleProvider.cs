@@ -7,16 +7,31 @@ namespace StudentConnect.Security
 {
     public sealed class RoleProvider : System.Web.Security.RoleProvider
     {
-        
+        private Dictionary<string, List<string>> userroles = new Dictionary<string, List<string>>();
         public RoleProvider()
         {
             this.ApplicationName = "Default";
         }
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
         {
-            throw new NotImplementedException();
+            foreach (var role in roleNames)
+            {
+                if (userroles.ContainsKey(role))
+                {
+                    var list = userroles[role];
+                    foreach (var user in usernames)
+                    {
+                        if (list.Contains(user)) continue;
+                        list.Add(user);
+                    }
+                    userroles[role] = list;
+                }
+                else
+                {
+                    userroles.Add(role, new List<string>(usernames));
+                }
+            }
         }
-
         public override string ApplicationName
         {
             get;
@@ -45,10 +60,7 @@ namespace StudentConnect.Security
 
         public override string[] GetRolesForUser(string username)
         {
-            if (username == "GlennAdmin")
-                return new[] { "Admin" };
-            else
-                return new[] { "Student" };
+            return userroles.Keys.Where(key => userroles[key].Contains(username)).ToArray();
         }
 
         public override string[] GetUsersInRole(string roleName)
