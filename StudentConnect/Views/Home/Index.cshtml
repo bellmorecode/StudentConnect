@@ -1,4 +1,5 @@
-﻿@{
+﻿@model StudentConnect.Data.HomeViewModel
+@{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -21,7 +22,7 @@
                                                 <div data-role="fieldcontain" id="positionsContainer">
             <fieldset data-role="controlgroup" id="interestedInPositions">
                 <legend>Interested in:</legend>
-                @foreach (StudentConnect.Controllers.Model.PositionItem item in Model)
+                @foreach (var item in Model.Metadata.Positions)
                 {       
                     <input type="checkbox" name="option-@item.Index" id="option-@item.Index" />
                     <label for="option-@item.Index">@item.Value</label>

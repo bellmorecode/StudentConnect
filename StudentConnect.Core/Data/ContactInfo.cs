@@ -5,8 +5,12 @@ using System.Text;
 
 namespace StudentConnect.Data
 {
-    public class ContactInfo
+    public sealed class ContactInfo
     {
-
+        public string FullName { get; set; }
+        public string Major { get; set; }
+        public string School { get; set; }
+        public string EmailAddress { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

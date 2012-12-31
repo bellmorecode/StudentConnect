@@ -62,6 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Azure\BlobExtensions.cs" />
+    <Compile Include="Data\HomeViewModel.cs" />
+    <Compile Include="Data\PositionItem.cs" />
     <Compile Include="Data\SchoolData.cs" />
     <Compile Include="Azure\StorageHelper.cs" />
     <Compile Include="Data\AboutContent.cs" />
