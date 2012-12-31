@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.StorageClient;
 using System.Configuration;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace StudentConnect.Azure
 {
@@ -27,10 +28,10 @@ namespace StudentConnect.Azure
                 var connstring = ConfigurationManager.AppSettings["AzureStorage"];
                 var acct = CloudStorageAccount.Parse(connstring);
                 var client = acct.CreateCloudBlobClient();
-                var dir = client.GetBlobDirectoryReference("studentconnect");
-                var adminpwd = dir.GetBlobReference("_adminpassword");
+                var dir = client.GetContainerReference("studentconnect");
+                var adminpwd = dir.GetBlobReferenceFromServer("_adminpassword");
                 var adminpwdText = adminpwd.DownloadText();
-                var schoolsRef = dir.GetBlobReference("_schools");
+                var schoolsRef = dir.GetBlobReferenceFromServer("_schools");
                 var schoolsText = schoolsRef.DownloadText();
 
                 _adminpassword = adminpwdText;
