@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace StudentConnect.Azure
+namespace StudentConnect.Data
 {
     public class SchoolData
     {

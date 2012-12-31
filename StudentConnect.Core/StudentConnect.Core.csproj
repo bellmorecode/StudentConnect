@@ -62,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Azure\BlobExtensions.cs" />
-    <Compile Include="Azure\SchoolData.cs" />
+    <Compile Include="Data\SchoolData.cs" />
     <Compile Include="Azure\StorageHelper.cs" />
     <Compile Include="Data\AboutContent.cs" />
     <Compile Include="Data\ContactInfo.cs" />

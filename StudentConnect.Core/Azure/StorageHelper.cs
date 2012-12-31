@@ -6,6 +6,7 @@ using Microsoft.WindowsAzure;
 using System.Configuration;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using StudentConnect.Data;
 
 namespace StudentConnect.Azure
 {

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model StudentConnect.Data.SchoolData[]
+@{
     ViewBag.Title = "Management Console";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -7,7 +8,14 @@
     @{ Html.RenderPartial("_HeaderNoNav", "Management Console"); }
     
     <div data-role="content">
-        <h4>Coming soon...</h4>
+        <h4>Active Schools</h4>
+
+        <ul>
+        @foreach (var s in Model)
+        { 
+            <li>@Html.ActionLink(s.Alias, "School", new { id = s.Alias }, new { rel = "external" })</li>
+        }
+        </ul>
     </div>
 
     @{ Html.RenderPartial(@"_Footer"); }
