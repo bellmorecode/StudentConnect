@@ -1,5 +1,8 @@
 ﻿@{ ViewBag.Title = Model; }
 <div data-role="header" data-theme="b" >
+    @if (Roles.IsUserInRole("Admin")) { 
+        <a href="@Url.Action("Index", "Manage")" data-icon="gear" rel="external" class="ui-btn-left" >Manage</a>
+    }
     <h1>@Model</h1>
     <a href="#aboutapp" data-rel="dialog" data-transition="pop" data-icon="info" class="ui-btn-right" data-iconpos="notext">About</a>
     <div data-role="navbar"  data-theme="b">

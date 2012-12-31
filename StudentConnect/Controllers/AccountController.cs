@@ -40,23 +40,20 @@ namespace StudentConnect.Controllers
             var validated = Membership.ValidateUser(username, passcode);
             if (validated)
             {
+                // implement 'Remember Me' feature
                 var remember = false;
                 if (collection["rememberme"] != null) remember = true;
                 FormsAuthentication.SetAuthCookie(username, remember);
 
-                // TODO: Let's check of there is another path to redirect to??
+                // redirect to the returnUrl if it exists
                 if (!string.IsNullOrWhiteSpace(returnUrl))
                 {
                     return Redirect(returnUrl);
                 }
-
-                return RedirectToAction("Index", "Home");
-
-                
+                // otherwise go to Home.
+                return RedirectToAction("Index", "Home");                
             }
-
-            // TODO: set failure message
-
+            ViewBag.AuthError = "Invalid Passcode";
             return View();
             
         }

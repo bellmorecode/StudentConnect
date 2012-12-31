@@ -5,31 +5,24 @@
 
 <div data-role="page">
     @{ Html.RenderPartial("_HeaderNoNav", "Login"); }
-
 	@using (Html.BeginForm("Login", "Account", FormMethod.Post))
-     {
+ {
         <div data-role="content">	
+            
             <div data-role="fieldcontain">
                 <label for="name">Passcode:</label>
-                <input type="text" name="passcode" id="passcode" value="" placeholder="Enter your passcode"  />
+                <input type="password" name="passcode" id="passcode" value="" placeholder="Enter your passcode"  />
+                
+                <div class="errormessage">@ViewBag.AuthError</div>
             </div>
-            
             <fieldset data-role="controlgroup" id="RemeberMe">
                 <legend>Remember Me:</legend>
                 <input type="checkbox" name="rememberme" id="rememberme" />
                 <label for="rememberme">Yes</label>
-                
             </fieldset>
-
             <input type="hidden" name="returnUrl" id="returnUrl" value="@Request.QueryString["ReturnUrl"]" />
-
             <input type="submit" value="Login" name="login" id="login" />
-	    </div>   
-     
-     
-     
-        
+	    </div>  
      }
-
     @{ Html.RenderPartial("_Footer"); }
 </div>
