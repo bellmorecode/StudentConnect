@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using StudentConnect.Utils;
+using StudentConnect.Azure;
 
 namespace StudentConnect.Controllers
 {
@@ -33,9 +35,12 @@ namespace StudentConnect.Controllers
         {
             var passcode = collection["passcode"];
             var returnUrl = collection["returnUrl"];
-            string username = "StudentConnect_AppHarbor";
 
-            if (passcode == "!pass@word1~") username = "GlennAdmin";
+            var helper = ServiceProvider.Resolve<StorageHelper>();
+
+            string username = helper.StandardUsername;
+
+            if (helper.AdminPassword.Equals(passcode)) username = helper.AdminUsername;
 
             var validated = Membership.ValidateUser(username, passcode);
             if (validated)
