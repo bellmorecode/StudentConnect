@@ -22,9 +22,18 @@ namespace StudentConnect.Controllers
         public ActionResult Index()
         {
             int index = 1;
-            var posList = (from x in repo.GetPositions() select new PositionItem { Index = index++, Value = x.Title }).ToArray();
+            
             var model = new HomeViewModel();
-            model.Metadata.Positions = posList;
+            
+            // TODO: Replace Mock with either BLANK or FROM COOKIES
+            // MOCK
+            ////model.Info.FullName = "Glenn Ferrie";
+            ////model.Info.Interests = "Software Developer,Project Manager";
+
+            model.Metadata.Positions = (from x in repo.GetPositions() 
+                                        select new PositionItem { Index = index++, Value = x.Title })
+                                        .ToArray();
+
             return View(model);
         }
 

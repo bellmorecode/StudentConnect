@@ -12,5 +12,8 @@ namespace StudentConnect.Data
         public string School { get; set; }
         public string EmailAddress { get; set; }
         public string PhoneNumber { get; set; }
+        public string About { get; set; }
+        public string Interests { get; set; }
+        public string PreferredContactMethod { get; set; }
     }
 }

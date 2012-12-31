@@ -1,7 +1,9 @@
-﻿@model StudentConnect.Data.HomeViewModel
+﻿@using System.Linq
+@model StudentConnect.Data.HomeViewModel
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var interests = Model.Info.Interests == null ? new string[0] : Model.Info.Interests.Split(',');
 }
 <div data-role="page" id="home"  >
     @{ Html.RenderPartial("_Header", "Home"); }
@@ -10,22 +12,30 @@
     {
         <div data-role="content" data-theme="b" >	
             <label for="name">Name:</label>
-            <input type="text" name="name" id="name" data-mini="true" />
+            <input type="text" name="name" id="name" data-mini="true" placeholder="Your Name" value="@Model.Info.FullName" />
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" data-mini="true" />
+            <input type="email" name="email" id="email" data-mini="true" placeholder="Your Email Address" value="@Model.Info.EmailAddress" />
             <label for="phone">Phone:</label>
-            <input type="tel" name="phone" id="phone" data-mini="true" />
+            <input type="tel" name="phone" id="phone" data-mini="true" placeholder="Mobile Number" value="@Model.Info.PhoneNumber"/>
             <label for="major">Major:</label>
-            <input type="text" name="major" id="major" data-mini="true" />
-            <label for="aboutyou">Tell us about you:</label>
-            <textarea name="textarea" id="aboutyou"></textarea>
+            <input type="text" name="major" id="major" data-mini="true" placeholder="What is your major / minor?" value="@Model.Info.Major" />
+            <label for="aboutyou">Bio:</label>
+            <textarea name="textarea" id="aboutyou" placeholder="Tell us a little bit about yourself"></textarea>
                                                 <div data-role="fieldcontain" id="positionsContainer">
             <fieldset data-role="controlgroup" id="interestedInPositions">
                 <legend>Interested in:</legend>
                 @foreach (var item in Model.Metadata.Positions)
-                {       
-                    <input type="checkbox" name="option-@item.Index" id="option-@item.Index" />
+                {
+                    if (interests.Contains(item.Value))
+                    {
+                        <input type="checkbox" name="option-@item.Index" id="option-@item.Index" checked="checked" />
                     <label for="option-@item.Index">@item.Value</label>
+                    }
+                    else
+                    { 
+                        <input type="checkbox" name="option-@item.Index" id="option-@item.Index" />
+                        <label for="option-@item.Index">@item.Value</label>
+                    }
                 }
             </fieldset>
         </div>
