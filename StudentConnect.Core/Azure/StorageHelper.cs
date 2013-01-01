@@ -109,7 +109,45 @@ namespace StudentConnect.Azure
 
         public void AddRequesterSubmission(string requesterId, ContactInfo submission)
         {
+            var dir = client.GetContainerReference("studentconnect-submissions");
+            var submissions = dir.GetBlockBlobReference(requesterId);
+            if (submissions.Exists())
+            {
+                var xml = submissions.DownloadText();
+                var ser = new XmlSerializer(typeof(RequesterSubmissions));
+                RequesterSubmissions rs;
+                using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml.ToCharArray())))
+                {
+                    rs = (RequesterSubmissions)ser.Deserialize(ms);
+                    // submit
+                    rs.Submissions.Add(submission);
+                }
 
+                using (var ms = new MemoryStream())
+                {
+                    ser.Serialize(ms, rs);
+                    // submit
+                    ms.Position = 0;
+                    submissions.UploadFromStream(ms);
+                }
+            }
+            else
+            {
+                // create empty element
+                var rs = new RequesterSubmissions() { RequesterID = requesterId };
+                // add data
+                rs.Submissions.Add(submission);                
+                // serialize
+                var ser = new XmlSerializer(typeof(RequesterSubmissions));
+                using (var ms = new MemoryStream())
+                {
+                    ser.Serialize(ms, rs);
+                    // submit
+                    ms.Position = 0;
+                    submissions.UploadFromStream(ms);
+                }
+                
+            }
         }
     }
 }

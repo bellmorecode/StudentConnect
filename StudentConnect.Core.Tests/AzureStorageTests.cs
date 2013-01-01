@@ -60,12 +60,24 @@ namespace StudentConnect.Core.Tests
             data.About.AboutUsHtml = "Something Digital (SD) is a dynamic, New York City-based Technology Services boutique offering three distinct practice groups—Interactive Design, Software, and IT Services—to meet diverse technology needs.";
 
             data.Positions.Add(new Position { Title = "Software Developer", Description = "A software developer works primarily with applications on the .NET Stack including ASP.NET, SharePoint, WPF, Silverlight and Dynamics CRM." });
-            data.Positions.Add(new Position { Title = "Software Developer", Description = "A project manager works with SD's client and with all departments to drive projects to completeing while effective tracking and communicating project progress." });
+            data.Positions.Add(new Position { Title = "Project Manager", Description = "A project manager works with SD's client and with all departments to drive projects to completeing while effective tracking and communicating project progress." });
 
-            data.People.Add(new Person { DisplayOrder = 1, Name = "Betsy Garcia", MoreInfo = "Betsy has been with SD for 2 years and manages our Human Resources department.  Betsy will be your key contact if you plan to pursue a career with SD.", Title = "HR Manager" });
-            data.People.Add(new Person { DisplayOrder = 2, Name = "Glenn Ferrie", MoreInfo = "Glenn runs our Microsoft Business Productivity practice and is involved in both the business development and deliery aspects of the business.", Title = "Practice Manager" });
+            data.People.Add(new Person { DisplayOrder = 1, Name = "Betsy Garcia", MoreInfo = "Betsy has been with SD for 2 years and manages our Human Resources department.  Betsy will be your key contact if you plan to pursue a career with SD.", Title = "HR Manager", ImageUrl = "https://sdshare.blob.core.windows.net/res/logo.png" });
+            data.People.Add(new Person { DisplayOrder = 2, Name = "Glenn Ferrie", MoreInfo = "Glenn runs our Microsoft Business Productivity practice and is involved in both the business development and deliery aspects of the business.", Title = "Practice Manager", ImageUrl = "https://sdshare.blob.core.windows.net/res/logo.png" });
             
             helper.UpdateSchoolMetadata("_Default", data);
+        }
+
+        [TestMethod]
+        public void Create_Requester_Submission()
+        {
+            var info = new ContactInfo { 
+                 About = "About me", RequesterID = "FAKE", Major = "Biology", School = "RPI", EmailAddress = "glenn@sample.com", FullName = "Glenn Ferrie",
+                  Interests = "Software Developer", LastUpdated = DateTime.Now, PhoneNumber = "2125551212", PreferredContactMethod = "Email"
+            };
+
+            var helper = new StorageHelper();
+            helper.AddRequesterSubmission(info.RequesterID, info);
         }
     }
 }

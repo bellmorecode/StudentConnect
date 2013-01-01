@@ -9,8 +9,6 @@ namespace StudentConnect.Data
 {
     public class ContentRepository : IContentRepository
     {
-        // for now. 
-        IContentRepository mock = new MockContentRepository();
         StorageHelper store = ServiceProvider.Resolve<StorageHelper>();
         public ContentRepository()
         {
@@ -20,22 +18,30 @@ namespace StudentConnect.Data
         public AboutContent GetAbout()
         {
             var school = (SchoolData)HttpContext.Current.Session["_ActiveSchool"];
-            return mock.GetAbout();
+            var data = store.GetSchoolMetadata(school.Alias);
+            if (data == null) data = store.GetSchoolMetadata("_Default");
+            return data.About;
         }
 
         public IEnumerable<Person> GetPeople()
         {
-            return mock.GetPeople();
+            var school = (SchoolData)HttpContext.Current.Session["_ActiveSchool"];
+            var data = store.GetSchoolMetadata(school.Alias);
+            if (data == null) data = store.GetSchoolMetadata("_Default");
+            return data.People;
         }
 
         public IEnumerable<Position> GetPositions()
         {
-            return mock.GetPositions();
+            var school = (SchoolData)HttpContext.Current.Session["_ActiveSchool"];
+            var data = store.GetSchoolMetadata(school.Alias);
+            if (data == null) data = store.GetSchoolMetadata("_Default");
+            return data.Positions;
         }
 
         public void SaveContact(ContactInfo info)
         {
-            
+            store.AddRequesterSubmission(info.RequesterID, info);       
         }
     }
 }
