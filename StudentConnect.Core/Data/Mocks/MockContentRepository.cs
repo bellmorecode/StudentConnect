@@ -6,7 +6,7 @@ using System.Web;
 namespace StudentConnect.Data
 {
     // HACK: This is a Mock! repository
-    public class MockContentRepository : IContentRepository 
+    public sealed class MockContentRepository : IContentRepository 
     {
         public IEnumerable<Position> GetPositions()
         {

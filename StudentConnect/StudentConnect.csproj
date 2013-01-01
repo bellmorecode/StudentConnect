@@ -132,8 +132,6 @@
     <Compile Include="Security\RolesList.cs" />
     <Compile Include="Security\MembershipProvider.cs" />
     <Compile Include="Security\RoleProvider.cs" />
-    <Compile Include="Utils\DevTools.cs" />
-    <Compile Include="Utils\ServiceProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\images\ajax-loader.gif" />

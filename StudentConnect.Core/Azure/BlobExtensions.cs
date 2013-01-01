@@ -5,8 +5,10 @@ using System.Text;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.IO;
 
-namespace StudentConnect.Azure
+
+namespace Microsoft.WindowsAzure.Storage.Blob
 {
+    // Custom Extension Method
     public static class BlobExtensions
     {
         public static string DownloadText(this ICloudBlob blob)
