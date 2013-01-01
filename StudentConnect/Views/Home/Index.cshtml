@@ -4,6 +4,12 @@
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var interests = Model.Info.Interests == null ? new string[0] : Model.Info.Interests.Split(',');
+
+    var LastUpdatedText = "";
+    if (Model.Info.LastUpdated != null)
+    {
+        LastUpdatedText = string.Format("Last Updated: {0:MM/dd/yyyy}", Model.Info.LastUpdated);
+    }
 }
 <div data-role="page" id="home"  >
     @{ Html.RenderPartial("_Header", "Home"); }
@@ -20,14 +26,14 @@
             <label for="major">Major:</label>
             <input type="text" name="major" id="major" data-mini="true" placeholder="What is your major / minor?" value="@Model.Info.Major" />
             <label for="aboutyou">Bio:</label>
-            <textarea name="textarea" id="aboutyou" placeholder="Tell us a little bit about yourself"></textarea>
+            <textarea name="textarea" id="aboutyou" placeholder="Tell us a little bit about yourself">@Model.Info.About</textarea>
                                                 <div data-role="fieldcontain" id="positionsContainer">
             <fieldset data-role="controlgroup" id="interestedInPositions">
                 <legend>Interested in:</legend>
                 @foreach (var item in Model.Metadata.Positions)
                 {
                     if (interests.Contains(item.Value))
-                    {
+                    { 
                         <input type="checkbox" name="option-@item.Index" id="option-@item.Index" checked="checked" />
                     <label for="option-@item.Index">@item.Value</label>
                     }
@@ -41,11 +47,25 @@
         </div>
             <fieldset data-role="controlgroup">
                 <legend>Preferred Contact Method:</legend>
-                    <input type="radio" name="radio-choice" id="radio-choice-1" value="email" checked="checked" />
-                    <label for="radio-choice-1">Email</label>
-                    <input type="radio" name="radio-choice" id="radio-choice-2" value="phone"  />
-                    <label for="radio-choice-2">Phone</label>
+                    @if (Model.Info.PreferredContactMethod == "Phone")
+                    {
+                        <input type="radio" name="email-choice" id="email-choice" value="email"  />
+                        <label for="email-choice">Email</label>
+                        <input type="radio" name="phone-choice" id="phone-choice" value="phone" checked="checked" />
+                        <label for="phone-choice">Phone</label>
+                    }
+                    else
+                    { 
+                        <input type="radio" name="email-choice" id="email-choice" value="email" checked="checked" />
+                        <label for="email-choice">Email</label>
+                        <input type="radio" name="phone-choice" id="phone-choice" value="phone"  />
+                        <label for="phone-choice">Phone</label>
+                    }
+                    
             </fieldset>
+            <div>
+                @LastUpdatedText                
+            </div>
             <input type="submit" value="Save"  />
         </div>
     }

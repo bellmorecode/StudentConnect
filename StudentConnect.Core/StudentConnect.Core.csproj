@@ -54,6 +54,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\System.Spatial.5.0.2\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Azure\BlobExtensions.cs" />
+    <Compile Include="Data\CookieNames.cs" />
     <Compile Include="Data\HomeViewModel.cs" />
     <Compile Include="Data\PositionItem.cs" />
     <Compile Include="Data\SchoolData.cs" />

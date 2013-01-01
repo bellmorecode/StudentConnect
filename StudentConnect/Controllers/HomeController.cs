@@ -24,12 +24,9 @@ namespace StudentConnect.Controllers
             int index = 1;
             
             var model = new HomeViewModel();
-            
-            // TODO: Replace Mock with either BLANK or FROM COOKIES
-            // MOCK
-            ////model.Info.FullName = "Glenn Ferrie";
-            ////model.Info.Interests = "Software Developer,Project Manager";
 
+            FillContactInfoFromCookies(model.Info);
+            
             model.Metadata.Positions = (from x in repo.GetPositions() 
                                         select new PositionItem { Index = index++, Value = x.Title })
                                         .ToArray();
@@ -37,12 +34,35 @@ namespace StudentConnect.Controllers
             return View(model);
         }
 
+        private void FillContactInfoFromCookies(ContactInfo info)
+        {
+            if (Request.Cookies[CookieNames.LastUpdated] != null)
+            {
+                var nameCookie = Response.Cookies[CookieNames.FullName];
+                var lastUpdatedCookie = Request.Cookies[CookieNames.LastUpdated];
+
+                info.FullName = nameCookie.Value;
+                info.LastUpdated = DateTime.Parse(lastUpdatedCookie.Value);
+            }
+        }
+
         [HttpPost]
         [Authorize(Roles = "Student, Admin")]
         public ActionResult SaveContactData(FormCollection collection)
         {
-            // TODO: Implement 'Save'
+            // add cookie
+            Response.Cookies[CookieNames.LastUpdated].Value = DateTime.Now.ToString();
+            Response.Cookies[CookieNames.FullName].Value = collection["name"];
+
+
+            CookieNames.SetResponseLifetime(Response, 365);
+            // save contact info
+
+            // notify user
+
             return RedirectToAction("Index");
         }
+
+        public HttpCookie lastUpdatedCookie { get; set; }
     }
 }

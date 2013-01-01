@@ -5,6 +5,7 @@ using System.Text;
 
 namespace StudentConnect.Data
 {
+    [Serializable]
     public sealed class ContactInfo
     {
         public string FullName { get; set; }
@@ -15,5 +16,9 @@ namespace StudentConnect.Data
         public string About { get; set; }
         public string Interests { get; set; }
         public string PreferredContactMethod { get; set; }
+
+        public string RequestorID { get; set; }
+
+        public DateTime? LastUpdated { get; set; }
     }
 }
