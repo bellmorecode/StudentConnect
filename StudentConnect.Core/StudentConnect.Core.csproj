@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Azure\BlobExtensions.cs" />
+    <Compile Include="Data\ContentRepository.cs" />
     <Compile Include="Data\CookieNames.cs" />
     <Compile Include="Data\HomeViewModel.cs" />
     <Compile Include="Data\PositionItem.cs" />

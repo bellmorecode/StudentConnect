@@ -61,11 +61,44 @@ namespace StudentConnect.Controllers
                 //    return Redirect(returnUrl);
                 //}
                 // otherwise go to Home.
+
                 return RedirectToAction("Index", "Home");                
             }
             ViewBag.AuthError = "Invalid Passcode";
-            return View();
-            
+            return View();   
+        }
+
+        public ActionResult Passthru(string passcode)
+        {
+            var helper = ServiceProvider.Resolve<StorageHelper>();
+
+            string username = helper.StandardUsername;
+
+            if (helper.AdminPassword.Equals(passcode)) username = helper.AdminUsername;
+
+            var validated = Membership.ValidateUser(username, passcode);
+            if (validated)
+            {
+
+                // implement 'Remember Me' feature
+                var remember = false;
+                FormsAuthentication.SetAuthCookie(username, remember);
+
+                var schooldata = helper.Schools.FirstOrDefault(q => q.Passcode == passcode);
+                if (schooldata != null) Session["_ActiveSchool"] = schooldata;
+
+                //TODO: Reimplement this!
+                // redirect to the returnUrl if it exists
+                //if (!string.IsNullOrWhiteSpace(returnUrl))
+                //{
+                //    return Redirect(returnUrl);
+                //}
+                // otherwise go to Home.
+
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.AuthError = "Invalid Passcode";
+            return View("Login");   
         }
     }
 }
