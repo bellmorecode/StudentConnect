@@ -3,23 +3,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script type="text/javascript">
+    $.mobile.ajaxEnabled = false;
+    // makes form posts work without ajax, preserves proper MVC urls
+</script>
+
 <div data-role="page">
     @{ Html.RenderPartial("_HeaderNoNav", "Login"); }
 	@using (Html.BeginForm("Login", "Account", FormMethod.Post))
  {
-        <div data-role="content">	
+        <div data-role="content" data-theme="b">	
             
             <div data-role="fieldcontain">
-                <label for="name">Passcode:</label>
-                <input type="password" name="passcode" id="passcode" value="" placeholder="Enter your passcode"  />
-                
-                <div class="errormessage">@ViewBag.AuthError</div>
+                <label for="passcode">Passcode:</label>
+                <input type="password" name="passcode" id="passcode" value="" placeholder="Enter your passcode"  />                
             </div>
+            <div class="errormessage">@ViewBag.AuthError</div>
+            <div data-role="fieldcontain">
             <fieldset data-role="controlgroup" id="RemeberMe">
                 <legend>Remember Me:</legend>
                 <input type="checkbox" name="rememberme" id="rememberme" />
                 <label for="rememberme">Yes</label>
             </fieldset>
+            </div>
             <input type="hidden" name="returnUrl" id="returnUrl" value="@Request.QueryString["ReturnUrl"]" />
             <input type="submit" value="Login" name="login" id="login" />
 	    </div>  

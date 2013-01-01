@@ -17,7 +17,7 @@ namespace StudentConnect.Data
         public string Interests { get; set; }
         public string PreferredContactMethod { get; set; }
 
-        public string RequestorID { get; set; }
+        public string RequesterID { get; set; }
 
         public DateTime? LastUpdated { get; set; }
     }

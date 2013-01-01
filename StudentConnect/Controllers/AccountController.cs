@@ -51,10 +51,10 @@ namespace StudentConnect.Controllers
                 FormsAuthentication.SetAuthCookie(username, remember);
 
                 // redirect to the returnUrl if it exists
-                if (!string.IsNullOrWhiteSpace(returnUrl))
-                {
-                    return Redirect(returnUrl);
-                }
+                //if (!string.IsNullOrWhiteSpace(returnUrl))
+                //{
+                //    return Redirect(returnUrl);
+                //}
                 // otherwise go to Home.
                 return RedirectToAction("Index", "Home");                
             }

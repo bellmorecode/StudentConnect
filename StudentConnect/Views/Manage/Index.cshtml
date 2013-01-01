@@ -8,7 +8,7 @@
     @{ Html.RenderPartial("_HeaderNoNav", "Management Console"); }
     
     <div data-role="content">
-        <h4>Active Schools</h4>
+        Update Content for the following active schools:
 
         <ul>
         @foreach (var s in Model)
@@ -16,6 +16,8 @@
             <li>@Html.ActionLink(s.Alias, "School", new { id = s.Alias }, new { rel = "external" })</li>
         }
         </ul>
+
+        Update default content @Html.ActionLink("here", "School", new { id = "_Default" }, new { rel = "external" })
     </div>
 
     @{ Html.RenderPartial(@"_Footer"); }

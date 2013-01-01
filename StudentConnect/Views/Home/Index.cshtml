@@ -11,58 +11,77 @@
         LastUpdatedText = string.Format("Last Updated: {0:MM/dd/yyyy}", Model.Info.LastUpdated);
     }
 }
+
+<script type="text/javascript">
+    $.mobile.ajaxEnabled = false;
+    // makes form posts work without ajax, preserves proper MVC urls
+</script>
+
 <div data-role="page" id="home"  >
     @{ Html.RenderPartial("_Header", "Home"); }
     
     @using (Html.BeginForm("SaveContactData", "Home", FormMethod.Post))
     {
         <div data-role="content" data-theme="b" >	
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" data-mini="true" placeholder="Your Name" value="@Model.Info.FullName" />
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" data-mini="true" placeholder="Your Email Address" value="@Model.Info.EmailAddress" />
-            <label for="phone">Phone:</label>
-            <input type="tel" name="phone" id="phone" data-mini="true" placeholder="Mobile Number" value="@Model.Info.PhoneNumber"/>
-            <label for="major">Major:</label>
-            <input type="text" name="major" id="major" data-mini="true" placeholder="What is your major / minor?" value="@Model.Info.Major" />
-            <label for="aboutyou">Bio:</label>
-            <textarea name="textarea" id="aboutyou" placeholder="Tell us a little bit about yourself">@Model.Info.About</textarea>
-                                                <div data-role="fieldcontain" id="positionsContainer">
+            <div data-role="fieldcontain">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" data-mini="true" placeholder="Your Name" value="@Model.Info.FullName" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" data-mini="true" placeholder="Your Email Address" value="@Model.Info.EmailAddress" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="phone">Phone:</label>
+                <input type="tel" name="phone" id="phone" data-mini="true" placeholder="Mobile Number" value="@Model.Info.PhoneNumber"/>
+            </div>
+            <div data-role="fieldcontain">
+                <label for="major">Major:</label>
+                <input type="text" name="major" id="major" data-mini="true" placeholder="What is your major / minor?" value="@Model.Info.Major" />
+            </div>
+            <div data-role="fieldcontain" >
+                <label for="about">About you:</label>
+                <textarea name="about" id="about" placeholder="Tell us a little bit about yourself">@Model.Info.About</textarea>    
+            </div>
+            <div data-role="fieldcontain" id="positionsContainer">
             <fieldset data-role="controlgroup" id="interestedInPositions">
                 <legend>Interested in:</legend>
                 @foreach (var item in Model.Metadata.Positions)
                 {
                     if (interests.Contains(item.Value))
                     { 
-                        <input type="checkbox" name="option-@item.Index" id="option-@item.Index" checked="checked" />
-                    <label for="option-@item.Index">@item.Value</label>
+                        <input type="checkbox" name="@item.OptionName" id="@item.OptionName" checked="checked" />
+                    <label for="@item.OptionName">@item.Value</label>
                     }
                     else
                     { 
-                        <input type="checkbox" name="option-@item.Index" id="option-@item.Index" />
-                        <label for="option-@item.Index">@item.Value</label>
+                        <input type="checkbox" name="@item.OptionName" id="@item.OptionName" />
+                        <label for="@item.OptionName">@item.Value</label>
                     }
                 }
             </fieldset>
-        </div>
+            </div>
+            <div data-role="fieldcontain" id="preferredContactContainer">
             <fieldset data-role="controlgroup">
                 <legend>Preferred Contact Method:</legend>
                     @if (Model.Info.PreferredContactMethod == "Phone")
                     {
-                        <input type="radio" name="email-choice" id="email-choice" value="email"  />
-                        <label for="email-choice">Email</label>
-                        <input type="radio" name="phone-choice" id="phone-choice" value="phone" checked="checked" />
-                        <label for="phone-choice">Phone</label>
+                        <input type="radio" name="contact-pref" id="email-preferred" value="Email"  />
+                        <label for="email-preferred">Email</label>
+                        <input type="radio" name="contact-pref" id="phone-preferred" value="Phone" checked="checked" />
+                        <label for="phone-preferred">Phone</label>
                     }
                     else
                     { 
-                        <input type="radio" name="email-choice" id="email-choice" value="email" checked="checked" />
-                        <label for="email-choice">Email</label>
-                        <input type="radio" name="phone-choice" id="phone-choice" value="phone"  />
-                        <label for="phone-choice">Phone</label>
+                        <input type="radio" name="contact-pref" id="email-preferred" value="Email" checked="checked" />
+                        <label for="email-preferred">Email</label>
+                        <input type="radio" name="contact-pref" id="phone-preferred" value="Phone"  />
+                        <label for="phone-preferred">Phone</label>
                     }
                     
             </fieldset>
+            </div>
+            <div><input type="hidden" name="requesterid" value="@Model.Info.RequesterID" /></div>
             <div>
                 @LastUpdatedText                
             </div>
