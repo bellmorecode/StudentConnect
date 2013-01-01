@@ -21,7 +21,8 @@ namespace StudentConnect.Controllers
         [Authorize(Roles = "Student, Admin")]
         public ActionResult Index()
         {
-            return View();
+
+            return View(repo.GetAbout());
         }
 
     }

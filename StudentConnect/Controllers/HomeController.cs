@@ -104,8 +104,9 @@ namespace StudentConnect.Controllers
 
             CookieNames.SetResponseLifetime(Response, 365);
             // save contact info
+            repo.SaveContact(info);
 
-            // notify user
+            // notify user (??)
 
             return RedirectToAction("Index");
         }
