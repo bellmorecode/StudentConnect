@@ -90,8 +90,12 @@ namespace StudentConnect.Controllers
             info.Interests = __getInterests(collection);
             info.LastUpdated = DateTime.Now;
             info.RequesterID = collection["requesterid"];
+            if (Session["_ActiveSchool"] != null) {
+                var data = (SchoolData)Session["_ActiveSchool"];
+                info.School = data.Alias;
+            } 
 
-            // add cookie
+            // add cookies
             Response.Cookies[CookieNames.LastUpdated].Value = info.LastUpdated.ToString();
             Response.Cookies[CookieNames.FullName].Value = info.FullName;
             Response.Cookies[CookieNames.EmailAddress].Value = info.EmailAddress;
@@ -102,15 +106,11 @@ namespace StudentConnect.Controllers
             Response.Cookies[CookieNames.PreferredContactMethod].Value = info.PreferredContactMethod;
             Response.Cookies[CookieNames.RequesterID].Value = info.RequesterID;
 
-            CookieNames.SetResponseLifetime(Response, 365);
+            CookieNames.SetResponseLifetime(Response, 365); // in days
+
             // save contact info
             repo.SaveContact(info);
-
-            // notify user (??)
-
             return RedirectToAction("Index");
         }
-
-        public HttpCookie lastUpdatedCookie { get; set; }
     }
 }

@@ -5,7 +5,8 @@ using System.Text;
 
 namespace StudentConnect.Data
 {
-    public class SchoolData
+    [Serializable]
+    public sealed class SchoolData
     {
         public string Alias { get; set; }
         public string Passcode { get; set; }

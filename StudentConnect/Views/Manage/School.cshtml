@@ -2,5 +2,15 @@
     ViewBag.Title = "School";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<div data-role="page" id="Admin"  >
+    @{ Html.RenderPartial("_HeaderNoNav", "School Info"); }
+    
+    <div data-role="content">
+        
+    </div>
 
-<h2>School</h2>
+    @{ Html.RenderPartial(@"_Footer"); }
+</div>
+
+
+

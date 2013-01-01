@@ -45,11 +45,16 @@ namespace StudentConnect.Controllers
             var validated = Membership.ValidateUser(username, passcode);
             if (validated)
             {
+
                 // implement 'Remember Me' feature
                 var remember = false;
                 if (collection["rememberme"] != null) remember = true;
                 FormsAuthentication.SetAuthCookie(username, remember);
 
+                var schooldata = helper.Schools.FirstOrDefault(q => q.Passcode == passcode);
+                if (schooldata != null) Session["_ActiveSchool"] = schooldata;
+
+                //TODO: Reimplement this!
                 // redirect to the returnUrl if it exists
                 //if (!string.IsNullOrWhiteSpace(returnUrl))
                 //{
