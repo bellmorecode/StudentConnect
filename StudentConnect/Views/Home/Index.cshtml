@@ -14,7 +14,7 @@
 
 <script type="text/javascript">
     $.mobile.ajaxEnabled = false;
-    // makes form posts work without ajax, preserves proper MVC urls
+    
 </script>
 
 <div data-role="page" id="home"  >
@@ -82,10 +82,10 @@
             </fieldset>
             </div>
             <div><input type="hidden" name="requesterid" value="@Model.Info.RequesterID" /></div>
+            <input type="submit" value="Save" id="SaveButton"  />
             <div>
                 @LastUpdatedText                
             </div>
-            <input type="submit" value="Save"  />
         </div>
     }
 

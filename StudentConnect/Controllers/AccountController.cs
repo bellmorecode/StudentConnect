@@ -47,8 +47,8 @@ namespace StudentConnect.Controllers
             {
 
                 // implement 'Remember Me' feature
-                var remember = false;
-                if (collection["rememberme"] != null) remember = true;
+                var remember = true;
+                //if (collection["rememberme"] != null) remember = true;
                 FormsAuthentication.SetAuthCookie(username, remember);
 
                 var schooldata = helper.Schools.FirstOrDefault(q => q.Passcode == passcode);

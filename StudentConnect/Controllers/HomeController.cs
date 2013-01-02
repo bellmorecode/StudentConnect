@@ -66,6 +66,12 @@ namespace StudentConnect.Controllers
             }
         }
 
+        [Authorize(Roles = "Student, Admin")]
+        public ActionResult Logout()
+        {
+            return RedirectToAction("Logout", "Account");
+        }
+
         [HttpPost]
         [Authorize(Roles = "Student, Admin")]
         public ActionResult SaveContactData(FormCollection collection)

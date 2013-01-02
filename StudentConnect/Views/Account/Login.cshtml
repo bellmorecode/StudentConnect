@@ -19,15 +19,8 @@
                 <input type="password" name="passcode" id="passcode" value="" placeholder="Enter your passcode"  />                
             </div>
             <div class="errormessage">@ViewBag.AuthError</div>
-            <div data-role="fieldcontain">
-            <fieldset data-role="controlgroup" id="RemeberMe">
-                <legend>Remember Me:</legend>
-                <input type="checkbox" name="rememberme" id="rememberme" />
-                <label for="rememberme">Yes</label>
-            </fieldset>
-            </div>
-            <input type="hidden" name="returnUrl" id="returnUrl" value="@Request.QueryString["ReturnUrl"]" />
             <input type="submit" value="Login" name="login" id="login" />
+            <input type="hidden" name="returnUrl" id="returnUrl" value="@Request.QueryString["ReturnUrl"]" />
 	    </div>  
      }
     @{ Html.RenderPartial("_Footer"); }

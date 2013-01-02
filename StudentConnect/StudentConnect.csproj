@@ -134,6 +134,7 @@
     <Compile Include="Security\RoleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\custom.css" />
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\icons-18-black.png" />
     <Content Include="Content\images\icons-18-white.png" />
