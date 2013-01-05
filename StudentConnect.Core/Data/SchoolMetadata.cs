@@ -8,6 +8,7 @@ namespace StudentConnect.Data
     [Serializable]
     public sealed class SchoolMetadata
     {
+        public const string DefaultAlias = "_Default";
         public static SchoolMetadata Empty
         {
             get

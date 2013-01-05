@@ -21,12 +21,12 @@ namespace StudentConnect.Data
             SchoolMetadata data;
             if (school == null)
             {
-                data = store.GetSchoolMetadata("_Default");
+                data = store.GetSchoolMetadata(SchoolMetadata.DefaultAlias);
             }
             else
             {
                 data = store.GetSchoolMetadata(school.Alias);
-                if (data == null) data = store.GetSchoolMetadata("_Default");
+                if (data == null) data = store.GetSchoolMetadata(SchoolMetadata.DefaultAlias);
             }
             return data.About;
         }
@@ -37,12 +37,12 @@ namespace StudentConnect.Data
             SchoolMetadata data;
             if (school == null)
             {
-                data = store.GetSchoolMetadata("_Default");
+                data = store.GetSchoolMetadata(SchoolMetadata.DefaultAlias);
             }
             else
             {
                 data = store.GetSchoolMetadata(school.Alias);
-                if (data == null) data = store.GetSchoolMetadata("_Default");
+                if (data == null) data = store.GetSchoolMetadata(SchoolMetadata.DefaultAlias);
             }
             return data.People;
         }
@@ -53,12 +53,12 @@ namespace StudentConnect.Data
             SchoolMetadata data;
             if (school == null)
             {
-                data = store.GetSchoolMetadata("_Default");
+                data = store.GetSchoolMetadata(SchoolMetadata.DefaultAlias);
             }
             else
             {
                 data = store.GetSchoolMetadata(school.Alias);
-                if (data == null) data = store.GetSchoolMetadata("_Default");
+                if (data == null) data = store.GetSchoolMetadata(SchoolMetadata.DefaultAlias);
             } 
             return data.Positions;
         }

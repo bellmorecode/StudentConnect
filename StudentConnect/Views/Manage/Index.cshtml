@@ -1,4 +1,5 @@
-﻿@model StudentConnect.Data.SchoolData[]
+﻿@using StudentConnect.Data
+@model SchoolData[]
 @{
     ViewBag.Title = "Management Console";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -17,7 +18,7 @@
         }
         </ul>
 
-        Update default content @Html.ActionLink("here", "School", new { id = "_Default" }, new { rel = "external" })
+        Update default content @Html.ActionLink("here", "School", new { id = SchoolMetadata.DefaultAlias }, new { rel = "external" })
     </div>
 
     @{ Html.RenderPartial(@"_Footer"); }

@@ -1,6 +1,6 @@
 ﻿@using StudentConnect.Utils
 @{ ViewBag.Title = Model; }
-<div data-role="header" data-theme="b" >
+<div data-role="header" data-theme="b" data-position="fixed" >
     @if (Roles.IsUserInRole("Admin")) { 
         <a href="@Url.Action("Index", "Manage")" data-icon="gear" rel="external" class="ui-btn-left" >Manage</a>
     }

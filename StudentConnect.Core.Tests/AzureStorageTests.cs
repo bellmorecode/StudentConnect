@@ -54,8 +54,8 @@ namespace StudentConnect.Core.Tests
             var helper = new StorageHelper();
             var data = new SchoolMetadata();
 
-            data.Header.Passcode = "_Default_";
-            data.Header.Alias = "_Default";
+            data.Header.Passcode = "_" + SchoolMetadata.DefaultAlias;
+            data.Header.Alias = SchoolMetadata.DefaultAlias;
             
             data.About.AboutUsHtml = "Something Digital (SD) is a dynamic, New York City-based Technology Services boutique offering three distinct practice groups—Interactive Design, Software, and IT Services—to meet diverse technology needs.";
 
@@ -64,8 +64,8 @@ namespace StudentConnect.Core.Tests
 
             data.People.Add(new Person { DisplayOrder = 1, Name = "Betsy Garcia", MoreInfo = "Betsy has been with SD for 2 years and manages our Human Resources department.  Betsy will be your key contact if you plan to pursue a career with SD.", Title = "HR Manager", ImageUrl = "https://sdshare.blob.core.windows.net/res/logo.png" });
             data.People.Add(new Person { DisplayOrder = 2, Name = "Glenn Ferrie", MoreInfo = "Glenn runs our Microsoft Business Productivity practice and is involved in both the business development and deliery aspects of the business.", Title = "Practice Manager", ImageUrl = "https://sdshare.blob.core.windows.net/res/logo.png" });
-            
-            helper.UpdateSchoolMetadata("_Default", data);
+
+            helper.UpdateSchoolMetadata(SchoolMetadata.DefaultAlias, data);
         }
 
         [TestMethod]
