@@ -7,9 +7,25 @@ using StudentConnect.Azure;
 using StudentConnect.Utils;
 namespace StudentConnect.Data
 {
-    public class ContentRepository : IContentRepository
+    public sealed class ContentRepository : IContentRepository
     {
         StorageHelper store = ServiceProvider.Resolve<StorageHelper>();
+
+        private SchoolData _current;
+
+        public SchoolData Current
+        {
+            get {
+                if (_current == null)
+                {
+                    var school = (SchoolData)HttpContext.Current.Session["_ActiveSchool"];
+                    if (school != null) return school;
+                }
+                return _current; 
+            }
+            set { _current = value; }
+        }
+
         public ContentRepository()
         {
 
@@ -17,7 +33,7 @@ namespace StudentConnect.Data
 
         public AboutContent GetAbout()
         {
-            var school = (SchoolData)HttpContext.Current.Session["_ActiveSchool"];
+            var school = Current;
             SchoolMetadata data;
             if (school == null)
             {
@@ -33,7 +49,7 @@ namespace StudentConnect.Data
 
         public IEnumerable<Person> GetPeople()
         {
-            var school = (SchoolData)HttpContext.Current.Session["_ActiveSchool"];
+            var school = Current;
             SchoolMetadata data;
             if (school == null)
             {
@@ -49,7 +65,7 @@ namespace StudentConnect.Data
 
         public IEnumerable<Position> GetPositions()
         {
-            var school = (SchoolData)HttpContext.Current.Session["_ActiveSchool"];
+            var school = Current;
             SchoolMetadata data;
             if (school == null)
             {

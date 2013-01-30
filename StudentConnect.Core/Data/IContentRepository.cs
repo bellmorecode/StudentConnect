@@ -6,6 +6,7 @@ namespace StudentConnect.Data
 
     public interface IContentRepository
     {
+        SchoolData Current { get; set; }
         AboutContent GetAbout();
         IEnumerable<Person> GetPeople();
         IEnumerable<Position> GetPositions();

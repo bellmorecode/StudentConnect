@@ -39,5 +39,17 @@ namespace StudentConnect.Data
         }
 
 
+
+        public SchoolData Current
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }
