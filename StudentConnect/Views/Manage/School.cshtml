@@ -1,13 +1,67 @@
-﻿@{
+﻿@model StudentConnect.Data.SchoolMetadata
+@{
     ViewBag.Title = "School";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <div data-role="page" id="Admin"  >
-    @{ Html.RenderPartial("_HeaderNoNav", "School Info"); }
+    @{ Html.RenderPartial("_HeaderNoNav", "School Info: " + Model.Header.Alias); }
     
     <div data-role="content">
         @Html.ActionLink("Back", "Index", null, new { rel="external" })
 
+        @using (Html.BeginForm("School", "Manage", FormMethod.Post) )
+        {
+            <div data-role="fieldcontain">
+                <label for="passcode">Passcode</label>
+                <input name="passcode" id="passcode" value="@Model.Header.Passcode" />
+
+                <label for="about">About Us</label>
+                <textarea name="about" id="about" rows="5" cols="40">@Model.About.AboutUsHtml</textarea>
+
+                <label for="logourl">Logo Url</label>
+                <input name="logourl" id="logourl" value="@Model.About.ImageUrl" />
+            </div>
+            <div data-role="fieldcontain">
+                <a href="#poseditor">Add New Position...</a>
+                <hr />
+            </div>
+            <div data-role="fieldcontain" >
+                <ul data-role="listview">
+                @foreach (var item in Model.Positions)
+                { 
+                    <li>
+                        <a href="#poseditor">
+                            <div>@item.Title</div>
+                            <div>@item.Description</div>
+                        </a>
+                        <a href="#projectsummary" data-rel="dialog" data-transition="pop" data-icon="delete" class="ui-btn-right" data-iconpos="notext" data-theme="d">Delete</a>
+                        
+                    </li>    
+                }
+                </ul>
+            </div>
+            <div data-role="fieldcontain">
+                <a href="#poseditor">Add New Person...</a>
+                <hr />
+            </div>
+            <div data-role="fieldcontain" >
+                <ul data-role="listview">
+                @foreach (var item in Model.People)
+                { 
+                    <li>
+                        <a href="#poseditor">
+                            <div>@item.Name</div>
+                            <div>@item.Title</div>
+                        </a>
+                        <a href="#projectsummary" data-rel="dialog" data-transition="pop" data-icon="delete" class="ui-btn-right" data-iconpos="notext" data-theme="d">Delete</a>
+                        
+                    </li>    
+                }
+                </ul>
+            </div>
+            
+            <input type="submit" value="Save" />
+        }
 
     </div>
 
