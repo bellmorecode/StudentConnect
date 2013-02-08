@@ -21,6 +21,7 @@ namespace StudentConnect.Controllers
         
         public ActionResult Login()
         {
+            if (User.Identity.IsAuthenticated) return RedirectToAction("Logout");
             return View();
         }
 
