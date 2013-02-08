@@ -68,23 +68,23 @@ namespace StudentConnect.Controllers
             return View();   
         }
 
-        public ActionResult Passthru(string passcode)
+        public ActionResult Passthru(string id)
         {
             var helper = ServiceProvider.Resolve<StorageHelper>();
 
             string username = helper.StandardUsername;
 
-            if (helper.AdminPassword.Equals(passcode)) username = helper.AdminUsername;
+            if (helper.AdminPassword.Equals(id)) username = helper.AdminUsername;
 
-            var validated = Membership.ValidateUser(username, passcode);
+            var validated = Membership.ValidateUser(username, id);
             if (validated)
             {
 
                 // implement 'Remember Me' feature
-                var remember = false;
+                var remember = true;
                 FormsAuthentication.SetAuthCookie(username, remember);
 
-                var schooldata = helper.Schools.FirstOrDefault(q => q.Passcode == passcode);
+                var schooldata = helper.Schools.FirstOrDefault(q => q.Passcode == id);
                 if (schooldata != null) Session["_ActiveSchool"] = schooldata;
 
                 //TODO: Reimplement this!
