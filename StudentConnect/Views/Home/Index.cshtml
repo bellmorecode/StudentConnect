@@ -13,8 +13,7 @@
 }
 
 <script type="text/javascript">
-    $.mobile.ajaxEnabled = false;
-    
+    $.mobile.ajaxEnabled = false;    
 </script>
 
 <div data-role="page" id="home"  >
@@ -38,6 +37,14 @@
             <div data-role="fieldcontain">
                 <label for="major">Major:</label>
                 <input type="text" name="major" id="major" data-mini="true" placeholder="What is your major / minor?" value="@Model.Info.Major" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="major">Graduating Semester:</label>
+                <input type="text" name="gradyear" id="gradyear" data-mini="true" placeholder="When are you graduating?" value="@Model.Info.GradYear" />
+            </div>
+            <div data-role="fieldcontain">
+                <label for="major">Looking for:</label>
+                <input type="text" name="jobtype" id="jobtype" data-mini="true" placeholder="Full-time or internship?" value="@Model.Info.JobType" />
             </div>
             <div data-role="fieldcontain" >
                 <label for="about">About you:</label>

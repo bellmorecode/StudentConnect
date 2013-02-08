@@ -16,6 +16,10 @@ namespace StudentConnect.Data
         public string About { get; set; }
         public string Interests { get; set; }
         public string PreferredContactMethod { get; set; }
+        public string GradYear { get; set; }
+        public string JobType { get; set; }
+
+        public string UploadKey { get; set; }
 
         public string RequesterID { get; set; }
 

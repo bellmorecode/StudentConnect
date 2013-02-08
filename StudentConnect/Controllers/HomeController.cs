@@ -46,6 +46,8 @@ namespace StudentConnect.Controllers
                 var pcmCookie = Request.Cookies[CookieNames.PreferredContactMethod];
                 var ridCookie = Request.Cookies[CookieNames.RequesterID];
                 var lastUpdatedCookie = Request.Cookies[CookieNames.LastUpdated];
+                var gradYearCookie = Request.Cookies[CookieNames.GradYear];
+                var jobTypeCookie = Request.Cookies[CookieNames.JobType];
 
                 info.FullName = nameCookie == null ? string.Empty : nameCookie.Value;
                 info.EmailAddress = emailCookie  == null ? string.Empty : emailCookie.Value;
@@ -55,6 +57,8 @@ namespace StudentConnect.Controllers
                 info.Interests = intsCookie == null ? string.Empty : intsCookie.Value;
                 info.PreferredContactMethod = pcmCookie == null ? string.Empty : pcmCookie.Value;
                 info.RequesterID = ridCookie == null ? string.Empty : ridCookie.Value;
+                info.GradYear = gradYearCookie == null ? string.Empty : gradYearCookie.Value;
+                info.JobType = jobTypeCookie == null ? string.Empty : jobTypeCookie.Value;
                 info.LastUpdated = lastUpdatedCookie == null ? null : new DateTime?(DateTime.Parse(lastUpdatedCookie.Value));
 
                 if (string.IsNullOrWhiteSpace(info.RequesterID))

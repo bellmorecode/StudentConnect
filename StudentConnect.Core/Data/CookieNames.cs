@@ -17,6 +17,8 @@ namespace StudentConnect.Data
         public const string Interests = "StudentConnect_Interests";
         public const string PreferredContactMethod = "StudentConnect_PreferredContactMethod";
         public const string RequesterID = "StudentConnect_RequesterID";
+        public const string GradYear = "StudentConnect_GradYear";
+        public const string JobType = "StudentConnect_JobType";
 
 
 
@@ -31,6 +33,8 @@ namespace StudentConnect.Data
             resp.Cookies[Interests].Expires = DateTime.Now.AddDays(lengthInDays);
             resp.Cookies[PreferredContactMethod].Expires = DateTime.Now.AddDays(lengthInDays);
             resp.Cookies[RequesterID].Expires = DateTime.Now.AddDays(lengthInDays);
+            resp.Cookies[GradYear].Expires = DateTime.Now.AddDays(lengthInDays);
+            resp.Cookies[JobType].Expires = DateTime.Now.AddDays(lengthInDays);
         }
 
         
