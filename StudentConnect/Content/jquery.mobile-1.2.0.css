@@ -1943,7 +1943,7 @@ label.ui-submit { font-size: 16px; line-height: 1.4; font-weight: normal; margin
 .ui-controlgroup-horizontal .ui-checkbox:last-child, .ui-controlgroup-horizontal .ui-radio:last-child { margin-right: 0; }
 .ui-controlgroup .ui-checkbox label, .ui-controlgroup .ui-radio label { font-size: 16px; }
 @media all and (min-width: 450px){
-	.ui-field-contain .ui-controlgroup-label { vertical-align: top; display: inline-block; width: 20%; margin: 0 2% 0 0; }
+	.ui-field-contain .ui-controlgroup-label { vertical-align: top; display: none; width: 20%; margin: 0 2% 0 0; }
 	.ui-field-contain .ui-controlgroup-controls { width: 78%; display: inline-block; }
 	.ui-field-contain .ui-controlgroup .ui-select { width: 100%; display: block; } 
 	.ui-field-contain .ui-controlgroup-horizontal .ui-select { width: auto; }
@@ -2082,7 +2082,7 @@ label.ui-submit { font-size: 16px; line-height: 1.4; font-weight: normal; margin
 	.ui-popup .ui-field-contain .ui-controlgroup-label,
 	.ui-popup .ui-field-contain label.ui-select,
 	.ui-popup .ui-field-contain label.ui-input-text {
-		font-size: 16px; line-height: 1.4; display: block; font-weight: normal; margin: 0 0 .3em;
+		font-size: 16px; line-height: 1.4; display: none; font-weight: normal; margin: 0 0 .3em;
 	}
 	.ui-popup .ui-field-contain .ui-btn.ui-submit,
 	.ui-popup .ui-field-contain .ui-controlgroup-controls,
@@ -2205,6 +2205,7 @@ label.ui-select { font-size: 16px; line-height: 1.4; font-weight: normal; margin
 	.ui-field-contain label.ui-select { vertical-align: top; display: inline-block; width: 20%; margin: 0 2% 0 0; }
 	.ui-field-contain .ui-select { width: 78%; display: inline-block; }
 	.ui-hide-label .ui-select { width: 100%; } 
+	
 }
 /* when no placeholder is defined in a multiple select, the header height doesn't even extend past the close button.  this shim's content in there */
 .ui-selectmenu .ui-header h1:after { content: '.'; visibility: hidden; }
@@ -2226,7 +2227,7 @@ textarea.ui-input-text { height: 50px; -webkit-transition: height 200ms linear; 
 input.ui-mini, .ui-mini input, textarea.ui-mini { font-size: 14px; }
 textarea.ui-mini { height: 45px; }
 @media all and (min-width: 450px){
-	.ui-field-contain label.ui-input-text  { vertical-align: top; display: inline-block; width: 20%; margin: 0 2% 0 0 }
+	.ui-field-contain label.ui-input-text  { vertical-align: top; display: none; width: 20%; margin: 0 2% 0 0 }
 	.ui-field-contain input.ui-input-text, 
 	.ui-field-contain textarea.ui-input-text, 
 	.ui-field-contain .ui-input-search { width: 78%; display: inline-block; } 

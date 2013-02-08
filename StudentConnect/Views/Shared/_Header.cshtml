@@ -4,18 +4,11 @@
     @if (Roles.IsUserInRole("Admin")) { 
         <a href="@Url.Action("Index", "Manage")" data-icon="gear" rel="external" class="ui-btn-left" >Manage</a>
     }
+    <img src="@Url.Content("~/_images/icon29x29.png")" style="position:absolute; top: 6px; left: 6px;" />
     <h1>@Model</h1>
     @if (DevTools.ShowLogoutLink())
     { 
         <a href="@Url.Action("Logout", "Account")" rel="external" data-icon="back" class="ui-btn-right" style="margin-right:32px;" >Logout</a>
     }
     <a href="#aboutapp" data-rel="dialog" data-transition="pop" data-icon="info" class="ui-btn-right" data-iconpos="notext">About</a>
-    <div data-role="navbar"  data-theme="b">
-        <ul>
-            <li><a href="@Url.Action("Index", "Home")" data-role="button" data-icon="home" rel="external" data-transition="pop" >Contact Info</a></li>
-            <li><a href="@Url.Action("Index", "Positions")" data-role="button" data-icon="check" rel="external" data-transition="pop">Positions</a></li>
-            <li><a href="@Url.Action("Index", "People")" data-role="button" data-icon="grid" rel="external" data-transition="pop">People</a></li>
-            <li><a href="@Url.Action("Index", "About")" data-role="button" data-icon="info" rel="external" data-transition="pop">About SD</a></li>
-        </ul>
-    </div>
 </div>

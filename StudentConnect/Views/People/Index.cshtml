@@ -9,13 +9,17 @@
     ul { margin-left: -40px; display: block; }
 </style>
 
+@section setActiveBtn { 
+    <script type="text/javascript">
+        $("#peoplelink").addClass("ui-btn-active");        
+    </script>
+}
+
 <div data-role="page" id="people"  data-title="People | StudentConnect" >
 
     @{ Html.RenderPartial("_Header", "People"); }
     
-    <div data-role="content" data-theme="b">	
-        <h4>SD People</h4>
-        
+    <div data-role="content" data-theme="b">	       
         <p>Here are some of the people you'll meet at the career fair: </p>
 
         <ul>

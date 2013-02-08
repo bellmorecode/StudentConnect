@@ -3,17 +3,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script type="text/javascript">
-    $.mobile.ajaxEnabled = false;
-    // makes form posts work without ajax, preserves proper MVC urls
-</script>
-
+@section noAjaxJs { 
+    <script type="text/javascript">
+        $.mobile.ajaxEnabled = false;
+        // makes form posts work without ajax, preserves proper MVC urls
+    </script>
+}
 <div data-role="page">
     @{ Html.RenderPartial("_HeaderNoNav", "Login"); }
 	@using (Html.BeginForm("Login", "Account", FormMethod.Post))
  {
         <div data-role="content" data-theme="b">	
-            
+            <img src="@Url.Content("~/_images/SomethingDigital320x103.png")" style="display: block; margin-left: auto; margin-right: auto;" />            
             <div data-role="fieldcontain">
                 <label for="passcode">Passcode:</label>
                 <input type="password" name="passcode" id="passcode" value="" placeholder="Enter your passcode"  />                

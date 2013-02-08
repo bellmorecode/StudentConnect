@@ -1,7 +1,7 @@
 ﻿@using System.Linq
 @model StudentConnect.Data.HomeViewModel
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Contact Info";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var interests = Model.Info.Interests == null ? new string[0] : Model.Info.Interests.Split(',');
 
@@ -12,12 +12,20 @@
     }
 }
 
-<script type="text/javascript">
-    $.mobile.ajaxEnabled = false;    
-</script>
+@section noAjaxJs { 
+    <script type="text/javascript">
+        $.mobile.ajaxEnabled = false;    
+    </script>
+}
+
+@section setActiveBtn { 
+    <script type="text/javascript">
+        $("#contactlink").addClass("ui-btn-active");        
+    </script>
+}
 
 <div data-role="page" id="home"  >
-    @{ Html.RenderPartial("_Header", "Home"); }
+    @{ Html.RenderPartial("_Header", (string)ViewBag.Title); }
     
     @using (Html.BeginForm("SaveContactData", "Home", FormMethod.Post))
     {
