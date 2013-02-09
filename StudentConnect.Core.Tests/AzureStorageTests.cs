@@ -26,7 +26,7 @@ namespace StudentConnect.Core.Tests
             client = acct.CreateCloudBlobClient();
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void Create_Metadata_Baseline()
         {
             var dir = client.GetContainerReference("studentconnect");
@@ -48,7 +48,7 @@ namespace StudentConnect.Core.Tests
             }
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void Create_Default_SchoolMetadata()
         {
             var helper = new StorageHelper();
@@ -71,7 +71,18 @@ namespace StudentConnect.Core.Tests
             helper.UpdateSchoolMetadata(SchoolMetadata.DefaultAlias, data);
         }
 
-        [TestMethod]
+        //[TestMethod]
+        //public void DeleteAllButDefault()
+        //{
+        //    var helper = new StorageHelper();
+        //    var all = helper.GetAllMetadata().Where(q => q.Header.Alias == SchoolMetadata.DefaultAlias).Take(1).ToArray();
+        //    Assert.AreEqual(all.Length, 1);
+        //    helper.UpdateAllMetadata(all);
+            
+            
+        //}
+
+        //[TestMethod]
         public void Create_Requester_Submission()
         {
             var info = new ContactInfo { 
@@ -82,5 +93,19 @@ namespace StudentConnect.Core.Tests
             var helper = new StorageHelper();
             helper.AddRequesterSubmission(info.RequesterID, info);
         }
+
+        //[TestMethod]
+        //public void CopyDefaultToRPI()
+        //{
+        //    var helper = new StorageHelper();
+        //    var def = helper.GetAllMetadata().FirstOrDefault(q => q.Header.Alias == SchoolMetadata.DefaultAlias);
+        //    Assert.IsNotNull(def);
+        //    var rpi = helper.Schools.FirstOrDefault(q => q.Alias == "RPI");
+        //    Assert.IsNotNull(rpi);
+        //    def.Header = rpi;
+        //    helper.UpdateSchoolMetadata(rpi.Alias, def);
+        //    var all = helper.GetAllMetadata();
+        //    Assert.AreEqual(all.Length, 2);
+        //}
     }
 }

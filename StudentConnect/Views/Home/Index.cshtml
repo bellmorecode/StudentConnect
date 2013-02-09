@@ -58,11 +58,7 @@
                 <label for="about">About you:</label>
                 <textarea name="about" id="about" placeholder="Tell us a little bit about yourself">@Model.Info.About</textarea>    
             </div>
-            <div data-role="fieldcontain" >
-                <label for="about">Resume:</label>
-                <input type="file" name="resumefile" id="resumefile" data-mini="true" placeholder="Attach your resume"  />
-            </div>
-
+            
             <div data-role="fieldcontain" id="positionsContainer">
             <fieldset data-role="controlgroup" id="interestedInPositions">
                 <legend>Interested in:</legend>
@@ -101,6 +97,16 @@
                     
             </fieldset>
             </div>
+            <div data-role="fieldcontain" id="resumeupload">
+            <fieldset data-role="controlgroup">
+                <legend>Resume (optional):</legend>
+            
+                
+                <input type="file" name="resumefile" id="resumefile" data-mini="true" placeholder="Attach your resume"  />
+                </fieldset>
+            
+            </div>
+
             <div><input type="hidden" name="requesterid" value="@Model.Info.RequesterID" /></div>
             <input type="submit" value="Save" id="SaveButton"  />
             <div>
