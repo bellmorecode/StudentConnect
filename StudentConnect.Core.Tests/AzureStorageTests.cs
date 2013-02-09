@@ -10,6 +10,7 @@ using StudentConnect.Data;
 using System.Xml.Serialization;
 using System.IO;
 using StudentConnect.Azure;
+using System.Threading.Tasks;
 
 namespace StudentConnect.Core.Tests
 {
@@ -83,6 +84,7 @@ namespace StudentConnect.Core.Tests
         //}
 
         //[TestMethod]
+
         public void Create_Requester_Submission()
         {
             var info = new ContactInfo { 
@@ -107,5 +109,23 @@ namespace StudentConnect.Core.Tests
         //    var all = helper.GetAllMetadata();
         //    Assert.AreEqual(all.Length, 2);
         //}
+
+        [TestMethod]
+        public void SetExpiryDateForBlobs()
+        {
+            // <META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+            // get the info for every blob in the container
+            var dir = client.GetContainerReference("res");
+            var list = dir.ListBlobs(useFlatBlobListing: true, blobListingDetails: BlobListingDetails.None).ToList();
+            foreach(var item in list)
+            {
+                CloudBlockBlob blob = item as CloudBlockBlob;
+                if (blob.Properties.CacheControl != null)
+                {
+                    blob.Properties.CacheControl = "public, max-age=2592000";
+                    blob.SetProperties();
+                }
+            }
+        }
     }
 }

@@ -91,10 +91,17 @@ namespace StudentConnect.Controllers
             };
             #endregion
 
-            
+            var info = new ContactInfo();
+
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+                info.UploadKey = string.Format("{0}-{1:yyyyMMddHHmmss}{2}", info.RequesterID, DateTime.Now, Path.GetExtension(file.FileName));
+                repo.SaveAttachment(info.UploadKey, file.InputStream);
+            }
 
             // scrape form data
-            var info = new ContactInfo();
+            
             info.FullName = collection["name"];
             info.EmailAddress = collection["email"];
             info.PhoneNumber = collection["phone"];
@@ -107,7 +114,10 @@ namespace StudentConnect.Controllers
             if (Session["_ActiveSchool"] != null) {
                 var data = (SchoolData)Session["_ActiveSchool"];
                 info.School = data.Alias;
-            } 
+            }
+
+            var mm = new MailManager();
+            mm.NotifySave(info);
 
             // add cookies
             Response.Cookies[CookieNames.LastUpdated].Value = info.LastUpdated.ToString();
@@ -123,22 +133,12 @@ namespace StudentConnect.Controllers
             CookieNames.SetResponseLifetime(Response, 365); // in days
 
 
-            if (Request.Files.Count > 0)
-            {
-                var file = Request.Files[0];
-                info.UploadKey = string.Format("{0}-{1:yyyyMMddHHmmss}{2}", info.RequesterID, DateTime.Now, Path.GetExtension(file.FileName));
-                repo.SaveAttachment(info.UploadKey, file.InputStream);
-            }
+            
             
 
             // save contact info
             repo.SaveContact(info);
 
-            // send notification
-            Task.Factory.StartNew(state => {
-                var mm = new MailManager();
-                mm.NotifySave((ContactInfo)state);
-            }, info);
             
             
             return RedirectToAction("Index");

