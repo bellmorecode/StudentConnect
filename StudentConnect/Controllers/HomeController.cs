@@ -9,6 +9,7 @@ using StudentConnect.Data;
 namespace StudentConnect.Controllers
 {
     using StudentConnect.Utils;
+    using System.IO;
     public class HomeController : Controller
     {
         IContentRepository repo;
@@ -89,6 +90,8 @@ namespace StudentConnect.Controllers
             };
             #endregion
 
+            
+
             // scrape form data
             var info = new ContactInfo();
             info.FullName = collection["name"];
@@ -117,6 +120,21 @@ namespace StudentConnect.Controllers
             Response.Cookies[CookieNames.RequesterID].Value = info.RequesterID;
 
             CookieNames.SetResponseLifetime(Response, 365); // in days
+
+
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+
+                using (var reader = new BinaryReader(file.InputStream))
+                {
+                    
+                    info.UploadKey = string.Format("{0}-{1:yyyyMMddHHmmss}{2}", info.RequesterID, DateTime.Now, Path.GetExtension(file.FileName));
+                    info.Attachment = reader.ReadBytes(file.ContentLength);
+                }
+
+
+            }
 
             // save contact info
             repo.SaveContact(info);

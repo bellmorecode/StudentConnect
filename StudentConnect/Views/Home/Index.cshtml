@@ -27,7 +27,7 @@
 <div data-role="page" id="home"  >
     @{ Html.RenderPartial("_Header", (string)ViewBag.Title); }
     
-    @using (Html.BeginForm("SaveContactData", "Home", FormMethod.Post))
+    @using (Html.BeginForm("SaveContactData", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <div data-role="content" data-theme="b" >	
             <div data-role="fieldcontain">
@@ -58,6 +58,11 @@
                 <label for="about">About you:</label>
                 <textarea name="about" id="about" placeholder="Tell us a little bit about yourself">@Model.Info.About</textarea>    
             </div>
+            <div data-role="fieldcontain" >
+                <label for="about">Resume:</label>
+                <input type="file" name="resumefile" id="resumefile" data-mini="true" placeholder="Attach your resume"  />
+            </div>
+
             <div data-role="fieldcontain" id="positionsContainer">
             <fieldset data-role="controlgroup" id="interestedInPositions">
                 <legend>Interested in:</legend>
