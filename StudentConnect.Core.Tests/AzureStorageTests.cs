@@ -59,11 +59,14 @@ namespace StudentConnect.Core.Tests
             
             data.About.AboutUsHtml = "Something Digital (SD) is a dynamic, New York City-based Technology Services boutique offering three distinct practice groups—Interactive Design, Software, and IT Services—to meet diverse technology needs.";
 
-            data.Positions.Add(new Position { Title = "Software Developer", Description = "A software developer works primarily with applications on the .NET Stack including ASP.NET, SharePoint, WPF, Silverlight and Dynamics CRM." });
+            data.Positions.Add(new Position { Title = "Interactive Developer", Description = "A software developer works primarily with applications on the LAMP Stack including Wordpress, Drupal, and Magento. Interactive developers primarily work on corporate websites or e-Commerce sites." });
+            data.Positions.Add(new Position { Title = "Software Developer", Description = "A software developer works primarily with applications on the .NET Stack including ASP.NET, SharePoint, SiteCore, WPF, Silverlight and Dynamics CRM. Software developers primarily create corporate line-of-business or collaborative web applications" });
             data.Positions.Add(new Position { Title = "Project Manager", Description = "A project manager works with SD's client and with all departments to drive projects to completeing while effective tracking and communicating project progress." });
+            data.Positions.Add(new Position { Title = "Business Analyst", Description = "An analyst would work with the PM team and the project leads to determine the clients business and technical requirements for a project as well as assist with the quality assurance process." });
 
-            data.People.Add(new Person { DisplayOrder = 1, Name = "Betsy Garcia", MoreInfo = "Betsy has been with SD for 2 years and manages our Human Resources department.  Betsy will be your key contact if you plan to pursue a career with SD.", Title = "HR Manager", ImageUrl = "https://sdshare.blob.core.windows.net/res/logo.png" });
-            data.People.Add(new Person { DisplayOrder = 2, Name = "Glenn Ferrie", MoreInfo = "Glenn runs our Microsoft Business Productivity practice and is involved in both the business development and deliery aspects of the business.", Title = "Practice Manager", ImageUrl = "https://sdshare.blob.core.windows.net/res/logo.png" });
+            data.People.Add(new Person { DisplayOrder = 1, Name = "Betsy Garcia", MoreInfo = "Betsy coordinates all activity or SD's Human Resources department.  Betsy will be your key contact if you plan to pursue a career with SD.", Title = "HR Facilitator" });
+            data.People.Add(new Person { DisplayOrder = 2, Name = "James Idoni", MoreInfo = "James is the director of our Project Management office (PMO) and leads a group of PM's focused on delivery high-quality results to our clients on-time and on budget. James works with our Software, Interactive and IT teams.", Title = "Manager, PMO" });
+            data.People.Add(new Person { DisplayOrder = 3, Name = "Glenn Ferrie", MoreInfo = "Glenn leads our Microsoft Business Productivity practice and is involved in both the business development and delivery aspects of the business. &lt;br/gt; LinkedIn: http://www.linkedin.com/in/glennferrie/", Title = "Practice Manager" });
 
             helper.UpdateSchoolMetadata(SchoolMetadata.DefaultAlias, data);
         }
