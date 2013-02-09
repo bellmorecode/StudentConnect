@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace StudentConnect.Data
 {
@@ -26,5 +28,22 @@ namespace StudentConnect.Data
         public string RequesterID { get; set; }
 
         public DateTime? LastUpdated { get; set; }
+
+        public override string ToString()
+        {
+            try
+            {
+                var ser = new XmlSerializer(typeof(ContactInfo));
+                using (var ms = new MemoryStream())
+                {
+                    ser.Serialize(ms, this);
+                    return new String(Encoding.UTF8.GetChars(ms.GetBuffer()));
+                }
+            }
+            catch (Exception )
+            {
+                return base.ToString();
+            }
+        }
     }
 }

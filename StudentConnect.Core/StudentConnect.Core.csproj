@@ -88,6 +88,7 @@
     <Compile Include="Data\SchoolMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\DevTools.cs" />
+    <Compile Include="Utils\MailManager.cs" />
     <Compile Include="Utils\ServiceProvider.cs" />
   </ItemGroup>
   <ItemGroup>

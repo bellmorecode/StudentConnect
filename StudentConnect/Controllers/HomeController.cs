@@ -135,9 +135,13 @@ namespace StudentConnect.Controllers
 
 
             }
+            // send notification
+            var mm = new MailManager();
+            mm.NotifySave(info);
 
             // save contact info
             repo.SaveContact(info);
+            
             return RedirectToAction("Index");
         }
     }
