@@ -24,7 +24,7 @@ namespace StudentConnect
         public void NotifySave(ContactInfo info)
         {
             string content = info.ToString();
-            SendEmail("sdstudentconnect@gmail.com", string.Format("Student Registered: {0}", info.FullName), content);
+            SendEmail("glenn.ferrie@gmail.com", string.Format("Student Registered: {0}", info.FullName), content);
         }
 
         private void SendEmail(string to, string subject, string body)

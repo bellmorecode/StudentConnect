@@ -26,11 +26,6 @@ namespace StudentConnect.Data
             set { _current = value; }
         }
 
-        public ContentRepository()
-        {
-
-        }
-
         public AboutContent GetAbout()
         {
             var school = Current;

@@ -10,6 +10,7 @@ namespace StudentConnect.Controllers
 {
     using StudentConnect.Utils;
     using System.IO;
+    using System.Threading.Tasks;
     public class HomeController : Controller
     {
         IContentRepository repo;
@@ -122,25 +123,28 @@ namespace StudentConnect.Controllers
             CookieNames.SetResponseLifetime(Response, 365); // in days
 
 
-            if (Request.Files.Count > 0)
-            {
-                var file = Request.Files[0];
-
-                using (var reader = new BinaryReader(file.InputStream))
-                {
-                    
-                    info.UploadKey = string.Format("{0}-{1:yyyyMMddHHmmss}{2}", info.RequesterID, DateTime.Now, Path.GetExtension(file.FileName));
-                    info.Attachment = reader.ReadBytes(file.ContentLength);
-                }
-
-
-            }
-            // send notification
-            var mm = new MailManager();
-            mm.NotifySave(info);
+            //if (Request.Files.Count > 0)
+            //{
+            //    var file = Request.Files[0];
+            //    using (var reader = new BinaryReader(file.InputStream))
+            //    {
+            //        info.UploadKey = string.Format("{0}-{1:yyyyMMddHHmmss}{2}", info.RequesterID, DateTime.Now, Path.GetExtension(file.FileName));
+            //        info.Attachment = reader.ReadBytes(file.ContentLength);
+            //    }
+            //}
+            
 
             // save contact info
             repo.SaveContact(info);
+
+            info.Attachment = null;
+
+            // send notification
+            Task.Factory.StartNew(state => {
+                var mm = new MailManager();
+                mm.NotifySave((ContactInfo)state);
+            }, info);
+            
             
             return RedirectToAction("Index");
         }

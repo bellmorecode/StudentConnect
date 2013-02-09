@@ -113,6 +113,24 @@ namespace StudentConnect.Azure
         {
             var dir = client.GetContainerReference("studentconnect-submissions");
             var submissions = dir.GetBlockBlobReference(requesterId);
+            
+            if (submission.Attachment != null)
+            {
+                var content = submission.Attachment;
+                var filename = submission.UploadKey;
+
+                var attachment = dir.GetBlockBlobReference(filename);
+                using (var ms = new MemoryStream(content))
+                {
+                    ms.Position = 0;
+                    attachment.UploadFromStream(ms);
+                }
+                
+            }
+            
+
+            submission.Attachment = null;
+
             if (submissions.Exists())
             {
                 var xml = submissions.DownloadText();
