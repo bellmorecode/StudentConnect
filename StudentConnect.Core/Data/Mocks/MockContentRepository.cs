@@ -51,5 +51,14 @@ namespace StudentConnect.Data
                 throw new NotImplementedException();
             }
         }
+
+
+
+
+
+        public void SaveAttachment(string path, System.IO.Stream stream)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

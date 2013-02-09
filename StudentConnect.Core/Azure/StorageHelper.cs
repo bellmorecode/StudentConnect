@@ -9,6 +9,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using StudentConnect.Data;
 using System.Xml.Serialization;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace StudentConnect.Azure
 {
@@ -109,28 +110,22 @@ namespace StudentConnect.Azure
             this.UpdateAllMetadata(all.ToArray());
         }
 
+        public void AddRequesterAttachment(string path, Stream stream)
+        {
+            Task.Factory.StartNew(() =>
+            {
+                var dir = client.GetContainerReference("studentconnect-submissions");
+                var attachment = dir.GetBlockBlobReference(path);
+                attachment.UploadFromStream(stream);
+
+            }).Wait();
+        }
+
         public void AddRequesterSubmission(string requesterId, ContactInfo submission)
         {
             var dir = client.GetContainerReference("studentconnect-submissions");
             var submissions = dir.GetBlockBlobReference(requesterId);
             
-            if (submission.Attachment != null)
-            {
-                var content = submission.Attachment;
-                var filename = submission.UploadKey;
-
-                var attachment = dir.GetBlockBlobReference(filename);
-                using (var ms = new MemoryStream(content))
-                {
-                    ms.Position = 0;
-                    attachment.UploadFromStream(ms);
-                }
-                
-            }
-            
-
-            submission.Attachment = null;
-
             if (submissions.Exists())
             {
                 var xml = submissions.DownloadText();

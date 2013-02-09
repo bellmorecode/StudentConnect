@@ -22,9 +22,7 @@ namespace StudentConnect.Data
         public string JobType { get; set; }
 
         public string UploadKey { get; set; }
-
-        public byte[] Attachment { get; set; }
-
+        
         public string RequesterID { get; set; }
 
         public DateTime? LastUpdated { get; set; }

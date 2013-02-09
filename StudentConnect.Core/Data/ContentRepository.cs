@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using StudentConnect.Azure;
 using StudentConnect.Utils;
+using System.IO;
 namespace StudentConnect.Data
 {
     public sealed class ContentRepository : IContentRepository
@@ -77,6 +78,11 @@ namespace StudentConnect.Data
         public void SaveContact(ContactInfo info)
         {
             store.AddRequesterSubmission(info.RequesterID, info);       
+        }
+
+        public void SaveAttachment(string path, Stream stream)
+        {
+            store.AddRequesterAttachment(path, stream);
         }
     }
 }
