@@ -917,3 +917,11 @@ a.ui-link-inherit {
 	outline-width: 1px;
 	outline-style: auto;
 }
+li { list-style-image: none; }
+        .errormessage { color: Red; font-weight: bold; margin: 8px; }  
+        .navfooter .ui-btn .ui-btn-inner { padding-top: 40px !important; }
+        .navfooter  .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
+		#contactlink .ui-icon { background:  url(http://sdshare.blob.core.windows.net/res/18-envelope.png) 50% 50% no-repeat; background-size: 24px 16px; }
+		#poslink .ui-icon { background:  url(http://sdshare.blob.core.windows.net/res/180-stickynote.png) 50% 50% no-repeat; background-size: 22px 22px;  }
+		#peoplelink .ui-icon { background:  url(http://sdshare.blob.core.windows.net/res/112-group.png) 50% 50% no-repeat;  background-size: 32px 21px; }
+		#aboutlink .ui-icon { background:  url(http://sdshare.blob.core.windows.net/res/sd_logo_gray.png) 50% 50% no-repeat;  background-size: 29px 29px; }
