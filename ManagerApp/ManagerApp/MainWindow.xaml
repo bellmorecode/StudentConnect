@@ -1,0 +1,36 @@
+﻿<Window x:Class="ManagerApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="StudentConnect - Manager" Height="350" Width="525">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Default">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" Margin="5,10">
+                        <Label>Alias: </Label>
+                        <TextBox Width="150" Margin="2"></TextBox>
+                        <Label>Passcode:</Label>
+                        <TextBox Width="150"  Margin="2"></TextBox>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="RPI">
+                
+            </TabItem>
+            <TabItem Header="NYU-Poly">
+
+            </TabItem>
+            <TabItem Header="Submissions">
+                
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
