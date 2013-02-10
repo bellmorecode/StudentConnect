@@ -93,13 +93,7 @@ namespace StudentConnect.Controllers
 
             var info = new ContactInfo();
 
-            if (Request.Files.Count > 0)
-            {
-                var file = Request.Files[0];
-                info.UploadKey = string.Format("{0}-{1:yyyyMMddHHmmss}{2}", info.RequesterID, DateTime.Now, Path.GetExtension(file.FileName));
-                repo.SaveAttachment(info.UploadKey, file.InputStream);
-            }
-
+            
             // scrape form data
             
             info.FullName = collection["name"];
