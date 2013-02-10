@@ -10,21 +10,65 @@
     </script>
 }
 
+@section mapJs {
+    <script type="text/javascript">
+        var scmap = {
+            setWidth: function () {
+                var w = $(window).width();
+                if (w < 350) {
+                    $("#mapframe").attr("width", "300");
+                } else {
+                    if (w < 600) {
+                        $("#mapframe").attr("width", "550");
+                    } else {
+                        if (w < 1000) {
+                            $("#mapframe").attr("width", "750");
+                        } else {
+                            $("#mapframe").attr("width", "1000");
+                        }
+                    }
+                }
+            },
+            setHeight: function () {
+                var w = $(window).height();
+                
+                    if (w < 600) {
+                        $("#mapframe").attr("height", "200");
+                    } else {
+                        if (w < 1000) {
+                            $("#mapframe").attr("height", "300");
+                        } else {
+                            $("#mapframe").attr("height", "500");
+                        }
+                    }
+                
+            }
+        };
+        $(window).resize(function () {
+            scmap.setWidth();
+            scmap.setHeight();
+        });
+    </script>
+}
+
 <div data-role="page" id="about" >
 
     @{ Html.RenderPartial("_Header", "About SD"); }
+    <img alt="logo" src="https://sdshare.blob.core.windows.net/res/SomethingDigital320x103.png" style="display: block; margin-left: auto; margin-right: auto; padding: 0px;" />            
 
     <div data-role="content" data-theme="b">	
-        <img src="https://sdshare.blob.core.windows.net/res/SomethingDigital320x103.png" style="display: block; margin-left: auto; margin-right: auto;" />            
-        <p >
-            @Model.AboutUsHtml
-        </p>
-        <div >
-            <iframe width="400" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=9+E+38th+St,+New+York,+NY&amp;aq=&amp;sll=40.697488,-73.979681&amp;sspn=0.565356,1.352692&amp;t=m&amp;ie=UTF8&amp;hq=&amp;hnear=9+E+38th+St,+New+York,+10016&amp;ll=40.750719,-73.981633&amp;spn=0.004413,0.010568&amp;z=16&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=9+E+38th+St,+New+York,+NY&amp;aq=&amp;sll=40.697488,-73.979681&amp;sspn=0.565356,1.352692&amp;t=m&amp;ie=UTF8&amp;hq=&amp;hnear=9+E+38th+St,+New+York,+10016&amp;ll=40.750719,-73.981633&amp;spn=0.004413,0.010568&amp;z=15" style="color:#0000FF;text-align:center" target="_blank">View Larger Map</a></small>
+        
+        <div data-role="field-contain">
+            <p >
+                @Model.AboutUsHtml
+            </p>
+            <div >
+                <iframe id="mapframe" width="300" height="200" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Something+Digital,+9+East+38th+Street,+New+York,+NY&amp;aq=&amp;sll=40.750241,-73.978987&amp;sspn=0.008827,0.021136&amp;t=p&amp;ie=UTF8&amp;hq=Something+Digital,&amp;hnear=9+E+38th+St,+New+York,+10016&amp;ll=40.750833,-73.982019&amp;spn=0.009753,0.012875&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Something+Digital,+9+East+38th+Street,+New+York,+NY&amp;aq=&amp;sll=40.750241,-73.978987&amp;sspn=0.008827,0.021136&amp;t=p&amp;ie=UTF8&amp;hq=Something+Digital,&amp;hnear=9+E+38th+St,+New+York,+10016&amp;ll=40.750833,-73.982019&amp;spn=0.009753,0.012875&amp;z=15&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+            </div>
+            <p>
+                Find out more about SD and our team on our website, <a href="http://www.somethingdigital.com/" target="_blank">somethingdigital.com</a>
+            </p>
         </div>
-        <p>
-            Find out more about SD and our team on our website, <a href="http://www.somethingdigital.com/" target="_blank">somethingdigital.com</a>
-        </p>
     </div>
 
     @{ Html.RenderPartial("_Footer"); }
