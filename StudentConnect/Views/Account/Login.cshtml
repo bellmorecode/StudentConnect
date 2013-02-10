@@ -6,7 +6,6 @@
 @section noAjaxJs { 
     <script type="text/javascript">
         $.mobile.ajaxEnabled = false;
-        // makes form posts work without ajax, preserves proper MVC urls
     </script>
 }
 <div data-role="page">
@@ -20,7 +19,9 @@
                 <input type="password" name="passcode" id="passcode" value="" placeholder="Enter your passcode"  />                
             </div>
             <div class="errormessage">@ViewBag.AuthError</div>
-            <input type="submit" value="Login" name="login" id="login" />
+            <div data-role="fieldcontain"> 
+                <input type="submit" value="Login" name="login" id="login" />
+            </div>
             <input type="hidden" name="returnUrl" id="returnUrl" value="@Request.QueryString["ReturnUrl"]" />
 	    </div>  
      }

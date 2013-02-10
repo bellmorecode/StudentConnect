@@ -7,6 +7,15 @@
     <link rel='shortcut icon' href='http://sdshare.blob.core.windows.net/res/favicon.ico' type='image/x-icon'>
     <link rel="stylesheet" type="text/css" href="http://sdshare.blob.core.windows.net/res/jquery.mobile-1.2.0.min.css" />
     <link rel="stylesheet" type="text/css" href="http://sdshare.blob.core.windows.net/res/sdmobile.min.css"  />
+    @if (!User.Identity.IsAuthenticated)
+    { 
+        // this is just for the login page, so the logo fits on an iPhone 4
+        <style type="text/css">
+            .ui-content { padding: 0px; }
+            .ui-field-contain { padding-left: 10px; padding-right: 10px; }
+            
+        </style>
+    }
 </head>
 <body>
     @RenderBody()    
