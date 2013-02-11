@@ -29,14 +29,21 @@ namespace StudentConnect
 
         private void SendEmail(string to, string subject, string body)
         {
-            var client = new SmtpClient();
-            client.Credentials = new NetworkCredential(username, password);
-            var message = new MailMessage();
-            message.To.Add(to);
-            message.Bcc.Add("glenn.ferrie@gmail.com");
-            message.Subject = subject;
-            message.Body = body;
-            client.Send(message);
+            try
+            {
+                var client = new SmtpClient();
+                client.Credentials = new NetworkCredential(username, password);
+                var message = new MailMessage();
+                message.To.Add(to);
+                message.Bcc.Add("glenn.ferrie@gmail.com");
+                message.Subject = subject;
+                message.Body = body;
+                client.Send(message);
+            }
+            catch
+            {
+                // do nothing
+            }
         }
     }
 }

@@ -17,6 +17,8 @@ namespace StudentConnect.Controllers
         PositionItem[] posList;
         int index = 1;
 
+        bool justSaved = false;
+
         public HomeController()
         {
             repo = ServiceProvider.Resolve<IContentRepository>();
@@ -105,6 +107,9 @@ namespace StudentConnect.Controllers
             info.Interests = __getInterests(collection);
             info.LastUpdated = DateTime.Now;
             info.RequesterID = collection["requesterid"];
+            info.GradYear = collection["gradyear"];
+            info.JobType = collection["jobtype"];
+                
             if (Session["_ActiveSchool"] != null) {
                 var data = (SchoolData)Session["_ActiveSchool"];
                 info.School = data.Alias;
@@ -130,17 +135,15 @@ namespace StudentConnect.Controllers
             Response.Cookies[CookieNames.Interests].Value = info.Interests;
             Response.Cookies[CookieNames.PreferredContactMethod].Value = info.PreferredContactMethod;
             Response.Cookies[CookieNames.RequesterID].Value = info.RequesterID;
-
+            Response.Cookies[CookieNames.GradYear].Value = info.GradYear;
+            Response.Cookies[CookieNames.JobType].Value = info.JobType;
+                
             CookieNames.SetResponseLifetime(Response, 365); // in days
-
-
-            
-            
 
             // save contact info
             repo.SaveContact(info);
 
-            
+            justSaved = true;
             
             return RedirectToAction("Index");
         }
