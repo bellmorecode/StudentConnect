@@ -11,14 +11,14 @@ namespace StudentConnect.Controllers
     using StudentConnect.Utils;
     using System.IO;
     using System.Threading.Tasks;
+    using System.Web.Caching;
     public class HomeController : Controller
     {
         IContentRepository repo;
         PositionItem[] posList;
         int index = 1;
 
-        bool justSaved = false;
-
+        
         public HomeController()
         {
             repo = ServiceProvider.Resolve<IContentRepository>();
@@ -27,12 +27,16 @@ namespace StudentConnect.Controllers
                                         .ToArray();
         }
 
-        [Authorize(Roles="Student, Admin")]
+        [Authorize(Roles = "Student, Admin")]
         public ActionResult Index()
-        {            
+        {
             var model = new HomeViewModel();
             FillContactInfoFromCookies(model.Info);
             model.Metadata.Positions = posList;
+            if (HttpContext.Cache.Get("Saved") != null)
+            {
+                ViewBag.SaveNotification = "Thanks for your submission! We will follow-up with you over the next few days!";
+            }
             return View(model);
         }
 
@@ -143,8 +147,8 @@ namespace StudentConnect.Controllers
             // save contact info
             repo.SaveContact(info);
 
-            justSaved = true;
-            
+            HttpContext.Cache.Add("Saved", true, null, DateTime.Now.AddSeconds(15), Cache.NoSlidingExpiration, CacheItemPriority.Default, null);
+
             return RedirectToAction("Index");
         }
     }

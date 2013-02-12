@@ -8,4 +8,10 @@
         <a href="@Url.Action("Logout", "Account")" rel="external" data-icon="back" class="ui-btn-right" style="margin-right:32px;" >Logout</a>
     }
     <a href="#aboutapp" data-rel="dialog" data-transition="pop" data-icon="info" class="ui-btn-right" data-iconpos="notext">About</a>
+    @if (ViewBag.SaveNotification != null)
+    { 
+        <div class="ui-bar ui-bar-e">
+            <p>@ViewBag.SaveNotification</p>
+        </div>
+    }
 </div>
