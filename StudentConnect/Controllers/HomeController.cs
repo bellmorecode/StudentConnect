@@ -122,8 +122,11 @@ namespace StudentConnect.Controllers
             if (Request.Files.Count > 0)
             {
                 var file = Request.Files[0];
-                info.UploadKey = string.Format("{0}-{1:yyyyMMddHHmmss}{2}", info.RequesterID, DateTime.Now, Path.GetExtension(file.FileName));
-                repo.SaveAttachment(info.UploadKey, file.InputStream);
+                if (!string.IsNullOrWhiteSpace(file.FileName))
+                {
+                    info.UploadKey = string.Format("{0}-{1:yyyyMMddHHmmss}{2}", info.RequesterID, DateTime.Now, Path.GetExtension(file.FileName));
+                    repo.SaveAttachment(info.UploadKey, file.InputStream);
+                }
             }
 
             var mm = new MailManager();
