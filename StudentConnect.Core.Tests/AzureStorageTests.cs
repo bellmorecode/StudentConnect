@@ -110,7 +110,7 @@ namespace StudentConnect.Core.Tests
         //    Assert.AreEqual(all.Length, 2);
         //}
 
-        [TestMethod]
+        //[TestMethod]
         public void SetExpiryDateForBlobs()
         {
             // <META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
