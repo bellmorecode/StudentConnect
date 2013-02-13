@@ -43,7 +43,7 @@ namespace StudentConnect.Controllers
         // get saved data from cookies
         private void FillContactInfoFromCookies(ContactInfo info)
         {
-            if (Request.Cookies[CookieNames.LastUpdated] != null)
+            if (Request.Cookies[CookieNames.LastUpdated] != null && Session["DO_NOT_SAVE"] == null)
             {
                 var nameCookie = Request.Cookies[CookieNames.FullName];
                 var emailCookie = Request.Cookies[CookieNames.EmailAddress];
